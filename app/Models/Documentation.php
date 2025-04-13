@@ -10,7 +10,7 @@ class Documentation extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributs du modèle.
      *
      * @var array<int, string>
      */
@@ -23,7 +23,7 @@ class Documentation extends Model
     ];
 
     /**
-     *Clé étrangère pointant vers projet  
+     *Clé étrangère
     */   
     public function project(){
         return $this->belongsTo(Projet::class, 'id_projet'); 
