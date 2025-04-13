@@ -22,7 +22,9 @@ class Projet extends Model
         'bilan',
         'type',
         'ordre',
-        'id_vignette'
+        'id_vignette',
+        'id_apprentissage',
+        'id_certification',
     ];
 
     /**
@@ -30,5 +32,9 @@ class Projet extends Model
      */
     public function vignette(){
         return $this->belongsTo(Vignette::class,'id_vignette');
+    }
+
+    public function apprentissages(){
+        return $this->belongsToMany(Apprentissage::class);
     }
 }
