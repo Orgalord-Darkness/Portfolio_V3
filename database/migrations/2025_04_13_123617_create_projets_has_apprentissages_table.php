@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjetHasApprentissageTable extends Migration
+class CreateProjetsHasApprentissagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -33,3 +33,4 @@ class CreateProjetHasApprentissageTable extends Migration
         Schema::dropIfExists('projets_has_apprentissages');
     }
 }
+
