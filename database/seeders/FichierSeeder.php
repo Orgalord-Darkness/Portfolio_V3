@@ -22,6 +22,6 @@ class FichierSeeder extends Seeder
                 'extension'=>'pdf',
                 'taille'=>130,
             ]
-            ]);
+        ]);
     }
 }
