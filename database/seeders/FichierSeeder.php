@@ -16,7 +16,11 @@ class FichierSeeder extends Seeder
         //
         DB::table('fichiers')->insert([
             [
-                
+                'id'=>1,
+                'nom'=>'CV_Heddy_Mameri',
+                'chemin' => '/fichiers/CV_Heddy_Mameri.pdf',
+                'extension'=>'pdf',
+                'taille'=>130,
             ]
             ]);
     }
