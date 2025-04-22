@@ -20,4 +20,18 @@ class Fichier extends Model
         'taille',
         'extension',
     ];
+
+    protected static function booted()
+        {
+            static::saving(function ($model) {
+                if ($model->file) {
+                    $model->nom = $model->file->getClientOriginalName();
+                    $model->chemin = $model->file->store('uploads', 'public');
+                    $model->taille = $model->file->getSize();
+                    $model->extension = $model->file->getClientOriginalExtension();
+                }
+            });
+        }
+
+
 }
