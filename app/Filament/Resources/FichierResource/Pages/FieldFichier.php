@@ -30,18 +30,21 @@ class FieldFichier
         return Fieldset::make('FICHIERS')->schema([
             Forms\Components\FileUpload::make('attachment')
             ->getUploadedFileNameForStorageUsing(
-                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                    ->prepend('custom-prefix')
+                fn (TemporaryUploadedFile $file): string => $file->getClientOriginalName()
             )
-            ->disk('public')
-            ->directory('fichiers')
-            ->visibility('public')
-            ->required()
-            ->afterStateUpdated(function ($state, $component) {
-                if ($state instanceof TemporaryUploadedFile) {
-                    $state->move('\\public\\fichiers', 'custom-prefix-' . $state->getClientOriginalName());
+            ->afterStateUpdated(function (TemporaryUploadedFile $state, callable $set) {
+                if ($state) {
+                    $set('nom', $state->getClientOriginalName());
+                    $set('extension', $state->getClientOriginalExtension());
+                    $set('taille', $state->getSize());
+                    $set('chemin', 'storage/fichiers/'.$state->getClientOriginalName());
                 }
-            }),
+            })
+            ->disk('public')
+            ->directory('fichiers') 
+            ->visibility('public')
+            ->required(),
+            
             Forms\Components\TextInput::make('nom')->required(), 
             Forms\Components\TextInput::make('chemin')->required(),
             Forms\Components\TextInput::make('extension')->required(), 
