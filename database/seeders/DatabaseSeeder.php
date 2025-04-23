@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FichierSeeder::class);
         $this->call(VignetteSeeder::class);
+        $this->call(ProjetSeeder::class);
     }
 }

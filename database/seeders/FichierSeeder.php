@@ -22,6 +22,8 @@ class FichierSeeder extends Seeder
                 'chemin' => '/fichiers/CV_Heddy_Mameri.pdf',
                 'extension'=>'pdf',
                 'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ]
         ]);
     }

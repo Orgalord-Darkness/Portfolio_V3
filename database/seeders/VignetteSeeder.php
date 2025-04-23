@@ -22,6 +22,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/htmlcss.jpg',
                 'extension'=>'jpg',
                 'taille'=>1022,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>2,
@@ -29,6 +31,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/python.png',
                 'extension'=>'png',
                 'taille'=>175,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>3,
@@ -36,6 +40,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/shellscript.png',
                 'extension'=>'png',
                 'taille'=>175,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>4,
@@ -43,6 +49,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/MySQL.png',
                 'extension'=>'png',
                 'taille'=>175,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>5,
@@ -50,6 +58,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/Logo_C_sharp.svg.png',
                 'extension'=>'png',
                 'taille'=>175,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>6,
@@ -57,6 +67,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/php.png',
                 'extension'=>'png',
                 'taille'=>79,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>7,
@@ -64,6 +76,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/figma.png',
                 'extension'=>'png',
                 'taille'=>4,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>8,
@@ -71,6 +85,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/wordpress.png',
                 'extension'=>'png',
                 'taille'=>6,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>9,
@@ -78,6 +94,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/MVC.jpeg',
                 'extension'=>'jpeg',
                 'taille'=>99,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>10,
@@ -85,6 +103,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/symfony.png',
                 'extension'=>'png',
                 'taille'=>9,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>11,
@@ -92,6 +112,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/laravel.png',
                 'extension'=>'png',
                 'taille'=>9,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>12,
@@ -99,6 +121,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/filament.png',
                 'extension'=>'png',
                 'taille'=>32,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>13,
@@ -106,13 +130,17 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/projet_integration.png',
                 'extension'=>'png',
                 'taille'=>572,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>14,
                 'nom'=>'Vet X',
-                'chemin' => '/storage/vignettes/projet_integration.png',
+                'chemin' => '/storage/vignettes/projet_responsive.png',
                 'extension'=>'png',
                 'taille'=>536,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'id'=>15,
@@ -120,6 +148,8 @@ class VignetteSeeder extends Seeder
                 'chemin' => '/storage/vignettes/MathIndex_Illustration.png',
                 'extension'=>'png',
                 'taille'=>572,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ]
             
         ]);

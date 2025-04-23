@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
                 'name'=>'MAMERI',
                 'email' => 'heddy.mameri@gmail.com',
                 'password'=>Hash::make('?Orga123/.'),
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ]
         ]);
 
