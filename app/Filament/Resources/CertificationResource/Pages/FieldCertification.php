@@ -1,5 +1,5 @@
 <?php 
-namespace App\Filament\Resources\ApprentissageResource\Pages;
+namespace App\Filament\Resources\CertificationResource\Pages;
 
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
@@ -23,15 +23,20 @@ use Filament\Forms\Components\Checkboxlist;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class FieldApprentissage
+class FieldCertification
 {
     public static function getFields()
     {
         return Fieldset::make('APPRENTISSAGES')->schema([
-            TextInput::make('libelle')
+                TextInput::make('libelle')
                     ->label('Libellé')
                     ->required()
-                    ->columnSpan(2),
+                    ->columnSpan(1),
+
+                TextInput::make('source')
+                    ->label('Source')
+                    ->required()
+                    ->columnSpan(1),
 
                 Textarea::make('description')
                     ->label('Description')
@@ -40,16 +45,21 @@ class FieldApprentissage
 
                 DatePicker::make('commencement')
                     ->label('Début')
-                    ->columnSpan(2),
+                    ->columnSpan(1),
 
                 DatePicker::make('fin')
                     ->label('Fin')
                     ->columnSpan(1),
 
                 Select::make('id_vignette')
-                    ->relationship('vignette', 'chemin')
+                    ->relationship('vignette', 'nom')
                     ->label('Vignette')
                     ->columnSpan(2),
+
+                Select::make('id_fichier')
+                ->relationship('fichier', 'nom')
+                ->label('Fichier')
+                ->columnSpan(2),
         ]);
     }
 }
