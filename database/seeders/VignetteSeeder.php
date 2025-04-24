@@ -151,6 +151,16 @@ class VignetteSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ]
+            ,
+            [
+                'id'=>16,
+                'nom'=>'JavaScript',
+                'chemin' => '/storage/vignettes/JavaScript.png',
+                'extension'=>'png',
+                'taille'=>572,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ]
             
         ]);
     }
