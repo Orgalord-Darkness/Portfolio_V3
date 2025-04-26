@@ -18,17 +18,6 @@ class ColumnFichier
             ->openUrlInNewTab()->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
             TextColumn::make('extension')->label('Extension')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
             TextColumn::make('taille')->label('Taille')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
-
-            // TextColumn::make('attachment')
-            //     ->label('Voir')
-            //     ->formatStateUsing(fn (string $state) => 'Voir le fichier')
-            //     ->url(fn ($record) => asset('storage/fichiers/' . $record->attachment))
-            //     ->openUrlInNewTab()
-            //     ->icon('heroicon-m-eye'),
-                
-
-        
-        
         ] ; 
     }
 }
