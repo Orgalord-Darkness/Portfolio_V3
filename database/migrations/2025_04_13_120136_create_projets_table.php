@@ -20,6 +20,8 @@ class CreateProjetsTable extends Migration
             $table->string('chef');
             $table->float('duree');
             $table->string('stack');
+            $table->boolean('is_github');
+            $table->string('github')->nullable();
             $table->text('bilan');
             $table->string('type');
             $table->integer('ordre');

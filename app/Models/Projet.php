@@ -19,6 +19,8 @@ class Projet extends Model
         'chef',
         'duree',
         'stack',
+        'is_github',
+        'github',
         'bilan',
         'type',
         'ordre',

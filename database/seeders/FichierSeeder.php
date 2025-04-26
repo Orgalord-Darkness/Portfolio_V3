@@ -22,7 +22,18 @@ class FichierSeeder extends Seeder
                 'chemin' => '/fichiers/CV_Heddy_Mameri.pdf',
                 'extension'=>'pdf',
                 'taille'=>130,
-            ]
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>2,
+                'nom'=>'Avatar',
+                'chemin' => '/fichiers/AutoPhoto.pdf',
+                'extension'=>'pdf',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
         ]);
     }
 }

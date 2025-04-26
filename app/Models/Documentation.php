@@ -25,7 +25,7 @@ class Documentation extends Model
     /**
      *Clé étrangère
     */   
-    public function project(){
+    public function projet(){
         return $this->belongsTo(Projet::class, 'id_projet'); 
     }
 
