@@ -207,7 +207,7 @@ class VignetteSeeder extends Seeder
                 'updated_at'=>now(),
             ],
             [
-                'id'=>21,
+                'id'=>22,
                 'nom'=>'Voltaire',
                 'chemin' => '/storage/vignettes/voltaire.png',
                 'extension'=>'png',
@@ -216,7 +216,7 @@ class VignetteSeeder extends Seeder
                 'updated_at'=>now(),
             ],
             [
-                'id'=>22,
+                'id'=>23,
                 'nom'=>'Pix',
                 'chemin' => '/storage/vignettes/pix.png',
                 'extension'=>'png',
@@ -225,7 +225,7 @@ class VignetteSeeder extends Seeder
                 'updated_at'=>now(),
             ],
             [
-                'id'=>23,
+                'id'=>24,
                 'nom'=>'VueJS',
                 'chemin' => '/storage/vignettes/vue.png',
                 'extension'=>'png',
@@ -234,7 +234,7 @@ class VignetteSeeder extends Seeder
                 'updated_at'=>now(),
             ],
             [
-                'id'=>24,
+                'id'=>25,
                 'nom'=>'POC_html_css_BTS1',
                 'chemin' => '/storage/vignettes/presentation_POC.png',
                 'extension'=>'png',
@@ -243,7 +243,7 @@ class VignetteSeeder extends Seeder
                 'updated_at'=>now(),
             ],
             [
-                'id'=>25,
+                'id'=>26,
                 'nom'=>'POC_html_css_BTS2',
                 'chemin' => '/storage/vignettes/Integration_html_css.png',
                 'extension'=>'png',

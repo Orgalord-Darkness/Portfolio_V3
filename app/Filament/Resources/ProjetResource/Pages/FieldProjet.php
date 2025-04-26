@@ -50,13 +50,28 @@ class FieldProjet
                     ->label('Stack')
                     ->columnSpan(1),
 
+                CheckBox::make('is_github')
+                    ->label('Est-ce hébergé sur github ?')
+                    ->reactive(),
+                    // ->columnSpace(1),
+
+                TextInput::make('github')
+                    ->label('Github')
+                    ->visible(fn ($get) => $get('is_github') === true )
+                    ->columnSpan(1),
+
                 Textarea::make('bilan')
                     ->label('Bilan')
                     ->rows(3)
                     ->columnSpan(2),
 
-                TextInput::make('type')
+                Select::make('type')
                     ->label('Type')
+                    ->options([
+                        'PPE' => 'Projet Personnel Encadré',
+                        'MS' => 'Mission de Stage',
+                        'PP' => 'Projet Personnel',
+                    ])
                     ->columnSpan(1),
 
                 TextInput::make('ordre')

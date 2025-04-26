@@ -1,10 +1,11 @@
 <?php 
 
 
-namespace App\Filament\Resources\ProjetResource\Pages ; 
+namespace App\Filament\Resources\ProjetResource\Pages; 
 
-use Filament\Tables\Columns\TextColumn ; 
-use Filament\Tables\Columns\ImageColumn ;
+use Filament\Tables\Columns\TextColumn; 
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Support\Enums\VerticalAlignment;
 
 class ColumnProjet
 {
@@ -17,7 +18,10 @@ class ColumnProjet
             TextColumn::make('description')->label('description')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('chef')->label('Responsable')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('duree')->label('Durée')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('stack')->label('Stack')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
+            TextColumn::make('stack')->label('Stack')->searchable()->sortable()->wrap()->verticalAlignment(VerticalAlignment::Start)->toggleable(isToggledHiddenByDefault: true),
+            TextColumn::make('is_github')->label('Stack')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
+            TextColumn::make('github')->label('Github')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true)->url(fn ($record) => $record->github)
+            ->openUrlInNewTab(),
             TextColumn::make('bilan')->label('bilan')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('type')->label('type')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('ordre')->label('ordre')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: true),
