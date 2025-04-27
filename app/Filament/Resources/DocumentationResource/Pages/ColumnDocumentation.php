@@ -18,7 +18,8 @@ class ColumnDocumentation
             ->openUrlInNewTab()->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
             TextColumn::make('extension')->label('Extension')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
             TextColumn::make('taille')->label('Taille')->searchable()->sortable()->wrap()->toggleable(isToggledHiddenByDefault: false),
-            TextColumn::make('id_projet')->label('Projet')->getStateUsing(fn ($record) => asset($record->projet->nom)),
+            TextColumn::make('id_projet')->label('Projet')->getStateUsing(fn ($record) => $record->projet->nom),
+
         ] ; 
     }
 }
