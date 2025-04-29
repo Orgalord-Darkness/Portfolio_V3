@@ -22,7 +22,7 @@ class Apprentissage extends Model
     ];
 
     public function projets(){
-        return $this->belongsToMany(Projet::class); 
+        return $this->belongsToMany(Projet::class,'projets_has_apprentissages', 'id_projet','id_apprentissage'); 
     }
 
     public function vignette(){
