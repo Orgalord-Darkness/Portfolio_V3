@@ -138,7 +138,7 @@ class ProjetSeeder extends Seeder
             [
                 'id'=>8,
                 'nom'=>'CongéFacile',
-                'description'=>'Projet personnel encadré de Symfony de BTS2 à réaliser en équipe de 3 avec une documentation complète à produire. C\'est une application de gestion des demandes de congés.',
+                'description'=>'Projet personnel encadré de Symfony de BTS2 à réaliser en équipe de 4 avec une documentation complète à produire. C\'est une application de gestion des demandes de congés.',
                 'chef'=>'M. Martins',
                 'duree'=>50,
                 'stack'=>'C#, github, git',

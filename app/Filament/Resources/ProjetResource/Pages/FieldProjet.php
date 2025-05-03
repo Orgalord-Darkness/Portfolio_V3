@@ -13,6 +13,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\MultiSelect;
 use App\Filament\Resources\SignalementResource\Pages;
 use App\Filament\Resources\SignalementResource\RelationManagers;
 use App\Models\Signalement;
@@ -83,6 +84,10 @@ class FieldProjet
                     ->relationship('vignette', 'chemin')
                     ->label('Vignette')
                     ->columnSpan(2),
+                Select::make('apprentissages')
+                ->relationship('apprentissages','libelle')
+                ->label('Technologies investies')
+                ->multiple(),
         ]);
     }
 }

@@ -37,6 +37,6 @@ class Projet extends Model
     }
 
     public function apprentissages(){
-        return $this->belongsToMany(Apprentissage::class);
+        return $this->belongsToMany(Apprentissage::class,'projets_has_apprentissages', 'projet_id','apprentissage_id');
     }
 }
