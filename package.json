@@ -10,6 +10,9 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@babel/plugin-transform-class-properties": "^7.27.1",
+        "@babel/plugin-transform-nullish-coalescing-operator": "^7.27.1",
+        "@babel/plugin-transform-optional-chaining": "^7.27.1",
         "axios": "^1.9.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
