@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    return view('welcome'); // On retournera la vue `resources/views/home.blade.php`
+});
+
+Route::get('/app', function () {
+    return file_get_contents(public_path('vue.html'));
+})->where('any', '.*');
