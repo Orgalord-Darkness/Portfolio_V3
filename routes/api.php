@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/projets-apprentissage', [HomeController::class, 'getProjetWithApprentissage']);
+
 

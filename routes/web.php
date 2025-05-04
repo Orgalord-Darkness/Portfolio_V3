@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('welcome'); // On retournera la vue `resources/views/home.blade.php`
-});
+Route::get('/home', [HomeController::class, 'blade']);
 
 Route::get('/app', function () {
     return file_get_contents(public_path('vue.html'));

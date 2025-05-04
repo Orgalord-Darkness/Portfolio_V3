@@ -28451,19 +28451,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      projets: [] // Tableau vide pour stocker les projets récupérés
+      projets: []
     };
   },
   mounted: function mounted() {
     var _this = this;
-    // Appel API pour récupérer les projets
-    axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/home') // Assure-toi que cette URL correspond à celle de ton API
-    .then(function (response) {
-      // Afficher les données dans la console pour déboguer
-      console.log('Réponse API:', response.data);
-      _this.projets = response.data; // Assigner les données à la variable projets
+    // Récupérer les données depuis Laravel
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://127.0.0.1:8000/api/home").then(function (response) {
+      _this.projets = response.data;
+      console.log("Projets récupérés :", _this.projets); // Debugging avec console.log
     })["catch"](function (error) {
-      console.error('Erreur lors de la récupération des projets:', error);
+      console.error("Erreur lors de la récupération des projets :", error);
     });
   }
 });
@@ -28484,10 +28482,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Liste des Projets", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets, function (projet) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Projets", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets, function (projet) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       key: projet.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.nom) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.description), 1 /* TEXT */);
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.nom), 1 /* TEXT */);
   }), 128 /* KEYED_FRAGMENT */))])]);
 }
 

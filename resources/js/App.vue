@@ -1,35 +1,35 @@
 <template>
     <div>
-      <h1>Liste des Projets</h1>
+      <h1>Projets</h1>
       <ul>
         <li v-for="projet in projets" :key="projet.id">
-          {{ projet.nom }} - {{ projet.description }}
+          {{ projet.nom }}
         </li>
       </ul>
     </div>
   </template>
   
   <script>
-  import axios from 'axios';
+  import axios from "axios";
   
   export default {
     data() {
       return {
-        projets: [], // Tableau vide pour stocker les projets récupérés
+        projets: [],
       };
     },
     mounted() {
-      // Appel API pour récupérer les projets
-      axios.get('/api/home')  // Assure-toi que cette URL correspond à celle de ton API
+      // Récupérer les données depuis Laravel
+      axios.get("http://127.0.0.1:8000/api/home")
         .then(response => {
-          // Afficher les données dans la console pour déboguer
-          console.log('Réponse API:', response.data);
-          this.projets = response.data; // Assigner les données à la variable projets
+          this.projets = response.data;
+          console.log("Projets récupérés :", this.projets); // Debugging avec console.log
         })
         .catch(error => {
-          console.error('Erreur lors de la récupération des projets:', error);
+          console.error("Erreur lors de la récupération des projets :", error);
         });
     }
   };
   </script>
+  
   
