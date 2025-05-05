@@ -1,73 +1,260 @@
-<!-- resources/views/projets.blade.php -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Nos Projets</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #carousel {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+        }
+        .snap-item {
+            scroll-snap-align: center;
+            flex: 0 0 100%;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col items-center pt-28 pb-10 space-y-6 relative">
+    <div class="h-screen">
+    <div class="h-screen">
+    <!-- Titre au-dessus du carousel -->
+    <div class="mx-auto w-1/2 border-2 border-blue-700 bg-blue-300 px-8 py-3 rounded shadow text-blue-900 text-2xl font-semibold">
+        <h1 class="text-center">Projets personnels encadrés</h1>
+    </div>
 
-    <div class="container mx-auto py-12 px-4">
-        <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Nos Projets</h1>
+    <!-- Carousel wrapper -->
+    <div class="relative w-full max-w-5xl" id="carousel-1">
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner">
+            @foreach($projets as $index => $projet)
+                <div class="snap-start bg-[#e6f0ff] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
+                    
+                    <!-- Partie Vignette (demi-cadre) -->
+                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                        @foreach($vignettes as $vignette)
+                            @if($projet->id_vignette == $vignette->id)
+                                <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
+                                    class="object-contain max-h-full w-auto">
+                            @endif
+                        @endforeach
+                    </div>
 
-        <!-- Carousel -->
-        <div class="relative">
-            <div class="flex overflow-x-auto space-x-4 pb-4 scroll-smooth" id="carousel">
-                @foreach ($projets as $projet)
-                    <div class="min-w-[250px] bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex-shrink-0">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $projet->nom }}</h2>
-                            <p class="text-gray-600 mb-3">{{ \Illuminate\Support\Str::limit($projet->description, 100) }}</p>
-                            @foreach($vignettes as $vignette)
-                                @if($projet->id_vignette == $vignette->id)
-                                    <img src="{{ $vignette->chemin}}" style="width:50%">
-                                @endif
-                            @endforeach
-                            @foreach($projets_has_apprentissages as $row)
-                                @if($row->id_projet == $projet->id)
-                                    @foreach($apprentissages as $apprentissage)
-                                        @if($row->id_apprentissage == $apprentissage->id)
-                                            <img src="{{ $apprentissage->vignette->chemin}}" style="width:10%">
+                    <!-- Partie Description et autres infos (demi-cadre) -->
+                    <div class="w-1/2 flex flex-col justify-between h-full">
+                        <!-- Titre -->
+                        <h2 class="text-2xl font-bold text-[#1e3a8a] text-center">{{ $projet->nom }}</h2>
+
+                        <!-- Description -->
+                        <div class="text-sm md:text-base text-gray-800 space-y-2 max-w-3xl">
+                            <p><span class="font-semibold">Description :</span> {{ $projet->description }}</p>
+                            <p><span class="font-semibold">Responsable :</span> {{ $projet->chef }}</p>
+                            <div class="flex items-start gap-2 flex-wrap">
+                                <span class="font-semibold">Stack :</span>
+                                <div class="flex gap-2 flex-wrap">
+                                    @foreach($projets_has_apprentissages as $row)
+                                        @if($row->id_projet == $projet->id)
+                                            @foreach($apprentissages as $apprentissage)
+                                                @if($row->id_apprentissage == $apprentissage->id)
+                                                    <img src="{{ $apprentissage->vignette->chemin }}" alt="Apprentissage"
+                                                         class="h-20 w-20 object-contain rounded">
+                                                @endif
+                                            @endforeach
                                         @endif
                                     @endforeach
-                                @endif
-                            @endforeach
-                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">En savoir plus</a>
+                                </div>
+                            </div>
+                            <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
+                            <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
+                            <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
                         </div>
-                    </div>
-                @endforeach
-            </div>
 
-            <!-- Flèches de navigation -->
-            <button class="absolute top-1/2 left-2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700" id="prev">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700" id="next">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
+                        <!-- Bouton -->
+                        <a href="#" class="bg-[#1e3a8a] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+                            Voir la documentation
+                        </a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 
-    <!-- Carousel Script -->
-    <script>
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-        const carousel = document.getElementById('carousel');
+    <!-- Pagination contrôlée -->
+    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-1">
+        @for ($i = 0; $i < count($projets); $i++)
+            <button class="w-3 h-3 rounded-full bg-blue-900 transition-all duration-300 dot" data-index="{{ $i }}"></button>
+        @endfor
+        <p class="text-gray-700 ml-4" id="page-count-1">1/{{ count($projets) }}</p>
+    </div>
+</div>
 
-        prev.addEventListener('click', () => {
-            carousel.scrollBy({ left: -300, behavior: 'smooth' });
+<div class="h-screen">
+    <!-- Titre au-dessus du carousel -->
+    <div class="mx-auto w-1/2 border-2 border-red-700 bg-red-300 px-8 py-3 rounded shadow text-red-900 text-2xl font-semibold">
+        <h1 class="text-center">Missions de stages</h1>
+    </div>
+
+    <!-- Carousel wrapper pour projets MS -->
+    <div class="relative w-full max-w-5xl" id="carousel-2">
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-2">
+            @foreach($ms as $index => $projet)
+                <div class="snap-start bg-[#ffe6e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
+                    
+                    <!-- Vignette -->
+                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                        @foreach($vignettes as $vignette)
+                            @if($projet->id_vignette == $vignette->id)
+                                <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
+                                     class="object-contain max-h-full w-auto">
+                            @endif
+                        @endforeach
+                    </div>
+
+                    <!-- Description -->
+                    <div class="w-1/2 flex flex-col justify-between h-full">
+                        <h2 class="text-2xl font-bold text-[#b30000] text-center">{{ $projet->nom }}</h2>
+                        <div class="text-sm md:text-base text-gray-800 space-y-2 max-w-3xl">
+                            <p><span class="font-semibold">Description :</span> {{ $projet->description }}</p>
+                            <p><span class="font-semibold">Responsable :</span> {{ $projet->chef }}</p>
+                            <div class="flex items-start gap-2 flex-wrap">
+                                <span class="font-semibold">Stack :</span>
+                                <div class="flex gap-2 flex-wrap">
+                                    @foreach($projets_has_apprentissages as $row)
+                                        @if($row->id_projet == $projet->id)
+                                            @foreach($apprentissages as $apprentissage)
+                                                @if($row->id_apprentissage == $apprentissage->id)
+                                                    <img src="{{ $apprentissage->vignette->chemin }}" alt="Apprentissage"
+                                                         class="h-20 w-20 object-contain rounded">
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
+                            <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
+                            <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
+                        </div>
+                        <a href="#" class="bg-[#b30000] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition">
+                            Voir la documentation
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Pagination carousel-2 -->
+    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-2">
+        @for ($i = 0; $i < count($ms); $i++)
+            <button class="w-3 h-3 rounded-full transition-all duration-300 dot" data-index="{{ $i }}"></button>
+        @endfor
+        <p class="text-gray-700 ml-4" id="page-count-2">1/{{ count($ms) }}</p>
+    </div>
+</div>
+
+
+
+<!-- Projets personnels -->
+<div class="h-screen">
+    <div class="mx-auto w-1/2 border-2 border-green-700 bg-green-300 px-8 py-3 rounded shadow text-green-900 text-2xl font-semibold">
+        <h1 class="text-center">Projets personnels</h1>
+    </div>
+
+    <!-- Carousel wrapper pour projets personnels -->
+    <div class="relative w-full max-w-5xl" id="carousel-3">
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-3">
+            @foreach($pp as $index => $projet)
+                <div class="snap-start bg-[#e6f9e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
+                    
+                    <!-- Vignette -->
+                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                        @foreach($vignettes as $vignette)
+                            @if($projet->id_vignette == $vignette->id)
+                                <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
+                                     class="object-contain max-h-full w-auto">
+                            @endif
+                        @endforeach
+                    </div>
+
+                    <!-- Description -->
+                    <div class="w-1/2 flex flex-col justify-between h-full">
+                        <h2 class="text-2xl font-bold text-[#2f6e4d] text-center">{{ $projet->nom }}</h2>
+                        <div class="text-sm md:text-base text-gray-800 space-y-2 max-w-3xl">
+                            <p><span class="font-semibold">Description :</span> {{ $projet->description }}</p>
+                            <p><span class="font-semibold">Responsable :</span> {{ $projet->chef }}</p>
+                            <div class="flex items-start gap-2 flex-wrap">
+                                <span class="font-semibold">Stack :</span>
+                                <div class="flex gap-2 flex-wrap">
+                                    @foreach($projets_has_apprentissages as $row)
+                                        @if($row->id_projet == $projet->id)
+                                            @foreach($apprentissages as $apprentissage)
+                                                @if($row->id_apprentissage == $apprentissage->id)
+                                                    <img src="{{ $apprentissage->vignette->chemin }}" alt="Apprentissage"
+                                                         class="h-20 w-20 object-contain rounded">
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
+                            <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
+                            <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
+                        </div>
+                        <a href="#" class="bg-[#2f6e4d] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition">
+                            Voir la documentation
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Pagination carousel-3 -->
+    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-3">
+        @for ($i = 0; $i < count($pp); $i++)
+            <button class="w-3 h-3 rounded-full bg-green-900 transition-all duration-300 dot" data-index="{{ $i }}"></button>
+        @endfor
+        <p class="text-gray-700 ml-4" id="page-count-3">1/{{ count($pp) }}</p>
+    </div>
+</div>
+
+<script>
+    // Init carrousels avec pagination
+    document.querySelectorAll('[id^="carousel-"]').forEach((carousel) => {
+        const idSuffix = carousel.id.split('-')[1]; // "2", "3"
+        const items = carousel.querySelectorAll('.snap-start');
+        const pagination = document.getElementById(`pagination-${idSuffix}`);
+        if (!pagination) return;
+
+        const dots = pagination.querySelectorAll('.dot');
+        const pageCount = document.getElementById(`page-count-${idSuffix}`);
+
+        dots.forEach((dot, i) => {
+            dot.classList.add('bg-gray-300');
+            dot.addEventListener('click', () => {
+                items[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+                updatePagination(i);
+            });
         });
 
-        next.addEventListener('click', () => {
-            carousel.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-    </script>
+        function updatePagination(activeIndex) {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('bg-[#b30000]', i === activeIndex);
+                dot.classList.toggle('bg-gray-300', i !== activeIndex);
+            });
+            if (pageCount) {
+                pageCount.textContent = `${activeIndex + 1}/${items.length}`;
+            }
+        }
+
+        updatePagination(0);
+    });
+</script>
+
+
+
 
 </body>
 </html>

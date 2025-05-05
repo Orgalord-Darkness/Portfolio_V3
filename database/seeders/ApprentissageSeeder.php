@@ -79,7 +79,7 @@ class ApprentissageSeeder extends Seeder
                 'description'=>'Appris sur l\'ensemble des deux années de BTS, en première année j\'ai appris les bases et en seconde année le développement en framework php',
                 'commencement'=>'2024-01-01',
                 'fin'=>'2024-12-01',
-                'id_vignette'=>16, 
+                'id_vignette'=>6, 
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],

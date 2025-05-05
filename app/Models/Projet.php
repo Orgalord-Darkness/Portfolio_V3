@@ -54,4 +54,31 @@ class Projet extends Model
         ->get();
         return $projets;
      }
+
+     public static function getPPE(){
+        $ppes = DB::table('projets')
+        ->where('projets.type', '=', 'PPE')
+        ->select('projets.*')
+        ->get();
+
+        return $ppes; 
+     }
+
+     public static function getMS(){
+        $ppes = DB::table('projets')
+        ->where('projets.type', '=', 'MS')
+        ->select('projets.*')
+        ->get();
+
+        return $ppes; 
+     }
+
+     public static function getPP(){
+        $ppes = DB::table('projets')
+        ->where('projets.type', '=', 'PP')
+        ->select('projets.*')
+        ->get();
+
+        return $ppes; 
+     }
 }
