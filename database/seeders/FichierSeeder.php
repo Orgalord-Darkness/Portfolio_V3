@@ -19,7 +19,7 @@ class FichierSeeder extends Seeder
             [
                 'id'=>1,
                 'nom'=>'CV_Heddy_Mameri',
-                'chemin' => '/fichiers/CV_Heddy_Mameri.pdf',
+                'chemin' => '/storage/fichiers/CV_Heddy_Mameri.pdf',
                 'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),
@@ -28,7 +28,7 @@ class FichierSeeder extends Seeder
             [
                 'id'=>2,
                 'nom'=>'Avatar',
-                'chemin' => '/fichiers/AutoPhoto.pdf',
+                'chemin' => '/storage/fichiers/AutoPhoto.png',
                 'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),

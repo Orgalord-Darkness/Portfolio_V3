@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Fichier extends Model
 {
@@ -32,6 +33,18 @@ class Fichier extends Model
                 }
             });
         }
+    
+    /**
+     * Méthodes requêtes SQL
+     */
+    public static function getAvatar(){
+        $fichier = DB::table('fichiers')
+        ->where('fichiers.nom', '=', 'Avatar')
+        ->select('fichiers.chemin')
+        ->first();
+
+        return $fichier->chemin; 
+     }
 
 
 }

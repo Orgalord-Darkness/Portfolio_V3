@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Projet;
 use App\Models\Vignette; 
 use App\Models\Apprentissage; 
+use App\Models\Fichier; 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,10 +27,11 @@ class HomeController extends Controller
         $pp = Projet::getPP();
         $projets_has_apprentissages = Projet::getProjetWithApprentissage();
         $apprentissages = Apprentissage::all();
+        $avatar = Fichier::getAvatar();
         // Retourne la vue et passe la variable $projets
         $vignettes = Vignette::all();
         // dd($projets_has_apprentissages);
-        return view('projets', compact('projets','vignettes','projets_has_apprentissages','apprentissages','ms','pp'));
+        return view('projets', compact('projets','vignettes','projets_has_apprentissages','apprentissages','ms','pp','avatar'));
     }
 
     
