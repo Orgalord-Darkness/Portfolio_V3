@@ -17,66 +17,69 @@
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center pt-28 pb-10 space-y-6 relative">
-    <div class="h-screen">
-    <div class="h-screen">
+
+    <div class=" w-full">
     <!-- Titre au-dessus du carousel -->
     <div class="mx-auto w-1/2 border-2 border-blue-700 bg-blue-300 px-8 py-3 rounded shadow text-blue-900 text-2xl font-semibold">
         <h1 class="text-center">Projets personnels encadrés</h1>
     </div>
 
     <!-- Carousel wrapper -->
-    <div class="relative w-full max-w-5xl" id="carousel-1">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner">
-            @foreach($projets as $index => $projet)
-                <div class="snap-start bg-[#e6f0ff] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
-                    
-                    <!-- Partie Vignette (demi-cadre) -->
-                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
-                        @foreach($vignettes as $vignette)
-                            @if($projet->id_vignette == $vignette->id)
-                                <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
-                                    class="object-contain max-h-full w-auto">
-                            @endif
-                        @endforeach
-                    </div>
+    <div class="relative w-full" id="carousel-1">
+    <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6 h-screen w-screen" id="carousel-inner">
+    @foreach($projets as $index => $projet)
+        <div class="snap-start bg-[#e6f0ff] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full">
+            
+            <!-- Partie Vignette (demi-cadre) -->
+            <div class="w-full h-70 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                @foreach($vignettes as $vignette)
+                    @if($projet->id_vignette == $vignette->id)
+                        <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
+                            class="object-contain w-full h-full">
+                    @endif
+                @endforeach
+            </div>
 
-                    <!-- Partie Description et autres infos (demi-cadre) -->
-                    <div class="w-1/2 flex flex-col justify-between h-full">
-                        <!-- Titre -->
-                        <h2 class="text-2xl font-bold text-[#1e3a8a] text-center">{{ $projet->nom }}</h2>
+            <!-- Partie Description et autres infos (demi-cadre) -->
+            <div class="w-1/2 flex flex-col justify-between ">
+                <!-- Titre -->
+                <h2 class="text-2xl font-bold text-[#1e3a8a] text-center">{{ $projet->nom }}</h2>
 
-                        <!-- Description -->
-                        <div class="text-sm md:text-base text-gray-800 space-y-2 max-w-3xl">
-                            <p><span class="font-semibold">Description :</span> {{ $projet->description }}</p>
-                            <p><span class="font-semibold">Responsable :</span> {{ $projet->chef }}</p>
-                            <div class="flex items-start gap-2 flex-wrap">
-                                <span class="font-semibold">Stack :</span>
-                                <div class="flex gap-2 flex-wrap">
-                                    @foreach($projets_has_apprentissages as $row)
-                                        @if($row->id_projet == $projet->id)
-                                            @foreach($apprentissages as $apprentissage)
-                                                @if($row->id_apprentissage == $apprentissage->id)
-                                                    <img src="{{ $apprentissage->vignette->chemin }}" alt="Apprentissage"
-                                                         class="h-20 w-20 object-contain rounded">
-                                                @endif
-                                            @endforeach
+                <!-- Description -->
+                <div class="text-sm md:text-base text-gray-800 space-y-2 max-w-3xl">
+                    <p><span class="font-semibold">Description :</span> {{ $projet->description }}</p>
+                    <p><span class="font-semibold">Responsable :</span> {{ $projet->chef }}</p>
+                    <div class="flex items-start gap-2 flex-wrap">
+                        <span class="font-semibold">Stack :</span>
+                        <div class="flex gap-2 flex-wrap">
+                            @foreach($projets_has_apprentissages as $row)
+                                @if($row->id_projet == $projet->id)
+                                    @foreach($apprentissages as $apprentissage)
+                                        @if($row->id_apprentissage == $apprentissage->id)
+                                            <img src="{{ $apprentissage->vignette->chemin }}" alt="Apprentissage"
+                                                 class="h-20 w-20 object-contain rounded">
                                         @endif
                                     @endforeach
-                                </div>
-                            </div>
-                            <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
-                            <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
-                            <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
+                                @endif
+                            @endforeach
                         </div>
-
-                        <!-- Bouton -->
-                        <a href="#" class="bg-[#1e3a8a] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
-                            Voir la documentation
-                        </a>
                     </div>
+                    <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
+                    <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
+                    <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
                 </div>
-            @endforeach
+
+                <!-- Bouton -->
+                <a href="#" class="bg-[#1e3a8a] w-1/3 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                    Voir la documentation
+                </a>
+
+
+            </div>
         </div>
+    @endforeach
+</div>
+
     </div>
 
     <!-- Pagination contrôlée -->
@@ -88,20 +91,20 @@
     </div>
 </div>
 
-<div class="h-screen">
+<div class="w-full">
     <!-- Titre au-dessus du carousel -->
     <div class="mx-auto w-1/2 border-2 border-red-700 bg-red-300 px-8 py-3 rounded shadow text-red-900 text-2xl font-semibold">
         <h1 class="text-center">Missions de stages</h1>
     </div>
 
     <!-- Carousel wrapper pour projets MS -->
-    <div class="relative w-full max-w-5xl" id="carousel-2">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-2">
+    <div class="relative w-full" id="carousel-2">
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6 h-screen w-screen" id="carousel-inner-2">
             @foreach($ms as $index => $projet)
                 <div class="snap-start bg-[#ffe6e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
                     
                     <!-- Vignette -->
-                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                    <div class="w-full h-70 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
                         @foreach($vignettes as $vignette)
                             @if($projet->id_vignette == $vignette->id)
                                 <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
@@ -156,19 +159,19 @@
 
 
 <!-- Projets personnels -->
-<div class="h-screen">
+<div class="w-full">
     <div class="mx-auto w-1/2 border-2 border-green-700 bg-green-300 px-8 py-3 rounded shadow text-green-900 text-2xl font-semibold">
         <h1 class="text-center">Projets personnels</h1>
     </div>
 
     <!-- Carousel wrapper pour projets personnels -->
-    <div class="relative w-full max-w-5xl" id="carousel-3">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-3">
+    <div class="relative w-full" id="carousel-3">
+        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6 h-screen w-screen" id="carousel-inner-3">
             @foreach($pp as $index => $projet)
                 <div class="snap-start bg-[#e6f9e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
                     
                     <!-- Vignette -->
-                    <div class="w-1/2 h-64 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
+                    <div class="w-full h-full bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden">
                         @foreach($vignettes as $vignette)
                             @if($projet->id_vignette == $vignette->id)
                                 <img src="{{ $vignette->chemin }}" alt="Vignette du projet"
@@ -252,9 +255,6 @@
         updatePagination(0);
     });
 </script>
-
-
-
 
 </body>
 </html>
