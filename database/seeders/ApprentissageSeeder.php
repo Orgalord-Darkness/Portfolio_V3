@@ -119,7 +119,7 @@ class ApprentissageSeeder extends Seeder
                 'description'=>'J\'ai découvert Laravel pour me préparer à mon stage de 2e année de BTS au Conseil Départemental du Val d\'Oise.',
                 'commencement'=>'2024-12-18',
                 'fin'=>'2025-03-07',
-                'id_vignette'=>12, 
+                'id_vignette'=>11, 
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
