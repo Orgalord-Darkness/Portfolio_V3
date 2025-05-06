@@ -44,8 +44,8 @@
 
 
 
-    <h1 class="text-center text-blue-900" id="presentation">Présentation</h1>
-    <div class="relative h-screen flex items-center justify-center bg-gray-100">
+    <h1 class="text-center text-blue-900 text-5xl" id="presentation">Présentation</h1>
+    <div class="relative h-screen flex items-center justify-center">
         <!-- Effet de traînée d'encre bleue -->
         <div class="absolute inset-0 flex items-center justify-center">
             <svg class="w-3/4 h-1/2 opacity-20" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
@@ -54,10 +54,10 @@
         </div>
 
         <!-- Contenu principal -->
-        <div class="relative z-10 flex bg-blue-100 rounded-xl shadow-lg overflow-hidden w-11/12 max-w-6xl">
+        <div class="relative z-10 flex bg-blue-100 rounded-xl shadow-lg overflow-hidden w-11/12 max-w-6xl border-4 border-blue-900">
             <!-- Photo -->
             <div class="w-1/2">
-                <img src="{{ $avatar }}" alt="Présentation" class="object-cover object-center h-full w-full rounded shadow-lg">
+                <img src="{{ $avatar }}" alt="Présentation" class="object-cover object-center border-4 border-blue-100 h-full w-full rounded shadow-lg">
             </div>
 
 
@@ -77,16 +77,16 @@
 
 
 
-    <h1 class="text-center text-blue-900" id="projets">Projets</h1>
+    <h1 class="text-center text-blue-900 text-5xl" id="projets">Projets</h1>
     <div class="h-screen">
     <!-- Titre au-dessus du carousel -->
-    <div class="mx-auto w-1/2 border-2 border-blue-700 bg-blue-300 px-8 py-3 rounded shadow text-blue-900 text-2xl font-semibold">
+    <div class="mx-auto w-1/2 border-4 border-blue-900 bg-blue-300 px-8 py-3 rounded shadow text-blue-900 text-2xl font-semibold">
         <h1 class="text-center">Projets Personnels Encadrés</h1>
     </div>
 
     <!-- Carousel wrapper pour projets MS -->
-    <div class="relative w-full max-w-5xl" id="carousel-2">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-2">
+    <div class="relative w-full max-w-5xl" id="carousel-1">
+        <div class="flex overflow-x-hidden snap-x snap-mandatory space-x-6" id="carousel-inner-2">
         @foreach($projets as $index => $projet)
             <div class="snap-start bg-[#e6f0ff] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full">
                 
@@ -141,7 +141,7 @@
     </div>
 
     <!-- Pagination contrôlée -->
-    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-1">
+    <div class="bg-[#e6f0ff] flex items-center gap-2 justify-center" id="pagination-1">
         @for ($i = 0; $i < count($projets); $i++)
             <button class="w-3 h-3 rounded-full bg-blue-900 transition-all duration-300 dot" data-index="{{ $i }}"></button>
         @endfor
@@ -151,13 +151,13 @@
 
 <div class="h-screen">
     <!-- Titre au-dessus du carousel -->
-    <div class="mx-auto w-1/2 border-2 border-red-700 bg-red-300 px-8 py-3 rounded shadow text-red-900 text-2xl font-semibold">
+    <div class="mx-auto w-1/2 border-4 border-red-900 bg-red-300 px-8 py-3 rounded shadow text-red-900 text-2xl font-semibold">
         <h1 class="text-center">Missions de stages</h1>
     </div>
 
     <!-- Carousel wrapper pour projets MS -->
     <div class="relative w-full max-w-5xl" id="carousel-2">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-2">
+        <div class="flex overflow-x-hidden snap-x snap-mandatory space-x-6" id="carousel-inner-2">
             @foreach($ms as $index => $projet)
                 <div class="snap-start bg-[#ffe6e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
                     
@@ -206,7 +206,7 @@
     </div>
 
     <!-- Pagination carousel-2 -->
-    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-2">
+    <div class="flex items-center gap-2 justify-center bg-[#ffe6e6]" id="pagination-2">
         @for ($i = 0; $i < count($ms); $i++)
             <button class="w-3 h-3 rounded-full transition-all duration-300 dot" data-index="{{ $i }}"></button>
         @endfor
@@ -218,13 +218,13 @@
 
 <!-- Projets personnels -->
 <div class="h-screen">
-    <div class="mx-auto w-1/2 border-2 border-green-700 bg-green-300 px-8 py-3 rounded shadow text-green-900 text-2xl font-semibold">
+    <div class="mx-auto w-1/2 border-4 border-green-900 bg-green-300 px-8 py-3 rounded shadow text-green-900 text-2xl font-semibold">
         <h1 class="text-center">Projets personnels</h1>
     </div>
 
     <!-- Carousel wrapper pour projets personnels -->
     <div class="relative w-full max-w-5xl" id="carousel-3">
-        <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6" id="carousel-inner-3">
+        <div class="flex overflow-x-hidden snap-x snap-mandatory space-x-6" id="carousel-inner-3">
             @foreach($pp as $index => $projet)
                 <div class="snap-start bg-[#e6f9e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full">
                     
@@ -259,7 +259,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <p><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</p>
+                            <a href="{{ $projet->github }}"><span class="font-semibold">Github :</span> {{ $projet->github ?? 'Pas de github' }}</a>
                             <p><span class="font-semibold">Durée :</span> {{ $projet->duree ?? '50' }} heures</p>
                             <p><span class="font-semibold">Bilan :</span> {{ $projet->bilan ?? "L'ensemble des fonctionnalités est traité, c’est du bon travail." }}</p>
                         </div>
@@ -273,7 +273,7 @@
     </div>
 
     <!-- Pagination carousel-3 -->
-    <div class="flex items-center gap-2 justify-center mt-4" id="pagination-3">
+    <div class="flex items-center gap-2 justify-center bg-[#e6f9e6]" id="pagination-3">
         @for ($i = 0; $i < count($pp); $i++)
             <button class="w-3 h-3 rounded-full bg-green-900 transition-all duration-300 dot" data-index="{{ $i }}"></button>
         @endfor
@@ -281,11 +281,11 @@
     </div>
 </div>
 
-<h1 class="text-center text-blue-900" id="parcours">Mon parcours</h1>
+<h1 class="text-center text-blue-900 text-5xl" id="parcours">Mon parcours</h1>
 
-<h1 class="text-center text-blue-900" id="certifications">Mes certifications</h1>
+<h1 class="text-center text-blue-900 text-5xl" id="certifications">Mes certifications</h1>
 
-<h1 class="text-center text-blue-900" id="contact">Formulaire de contact</h1>
+<h1 class="text-center text-blue-900 text-5xl" id="contact">Formulaire de contact</h1>
 <script>
     // Init carrousels avec pagination
     document.querySelectorAll('[id^="carousel-"]').forEach((carousel) => {
@@ -323,7 +323,10 @@
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggle-sidebar');
 
-    let sidebarVisible = true;
+    let sidebarVisible = false; // Initialiser à false pour que le menu soit invisible par défaut
+
+    // Ajouter la classe 'hidden' au sidebar par défaut
+    sidebar.classList.add('hidden');
 
     toggleBtn.addEventListener('click', () => {
         sidebarVisible = !sidebarVisible;
@@ -337,9 +340,10 @@
         }
     });
 
-    // Initialise avec l’icône de fermeture
-    toggleBtn.textContent = '✕';
+    // Initialise avec l’icône d'ouverture
+    toggleBtn.textContent = '☰';
 </script>
+
 
 
 </body>
