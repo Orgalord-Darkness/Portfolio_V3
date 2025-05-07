@@ -14,9 +14,23 @@ class HomeController extends Controller
     public function index()
     {
         // Récupère des données (exemple avec des utilisateurs)
-        $data = Projet::getProjetWithApprentissage();
+        $ppe = Projet::getPPE();  // Appel de ta méthode dans le modèle
+        $ms = Projet::getMS();
+        $pp = Projet::getPP();
+        $avatar = Fichier::getAvatar();
+        $apprentissages = Apprentissage::all();
+        $avatar = Fichier::getAvatar();
+        // Retourne la vue et passe la variable $projets
+        $vignettes = Vignette::all();
         // Retourne les données en réponse JSON
-        return response()->json($data);
+        return response()->json([
+            'projets' => $ppe,
+            'ms' => $ms, 
+            'pp' => $pp,
+            'apprentissages' => $apprentissages,
+            'vignettes' => $vignettes,
+            'avatar' => $avatar,
+        ]);
     }
 
     public function blade()
