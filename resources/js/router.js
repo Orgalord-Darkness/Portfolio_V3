@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Presentation from './components/Presentation.vue';
+// import Projet from './components/Projet.vue';
 // import Projets from './components/Projets.vue';
 // import Parcours from './components/Parcours.vue';
 // import Certifications from './components/Certifications.vue';
