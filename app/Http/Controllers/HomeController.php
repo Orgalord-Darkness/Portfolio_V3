@@ -19,6 +19,7 @@ class HomeController extends Controller
         $pp = Projet::getPP();
         $avatar = Fichier::getAvatar();
         $apprentissages = Apprentissage::all();
+        $projets_has_apprentissages = Projet::getProjetWithApprentissage();
         $avatar = Fichier::getAvatar();
         // Retourne la vue et passe la variable $projets
         $vignettes = Vignette::all();
@@ -30,6 +31,7 @@ class HomeController extends Controller
             'apprentissages' => $apprentissages,
             'vignettes' => $vignettes,
             'avatar' => $avatar,
+            'projets_has_apprentissages' => $projets_has_apprentissages,
         ]);
     }
 

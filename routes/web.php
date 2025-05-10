@@ -23,3 +23,7 @@ Route::get('/home', [HomeController::class, 'blade']);
 Route::get('/app', function () {
     return file_get_contents(public_path('vue.html'));
 })->where('any', '.*');
+
+Route::get('/projets', function () {
+    return file_get_contents(public_path('vue.html'));
+})->where('any', '.*');

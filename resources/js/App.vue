@@ -27,7 +27,8 @@
       <router-link to="/parcours" class="text-gray-800 hover:text-blue-600 transition">Parcours</router-link>
       <router-link to="/certifications" class="text-gray-800 hover:text-blue-600 transition">Certifications</router-link>
       <router-link to="/contact" class="text-gray-800 hover:text-blue-600 transition">Contact</router-link>
-    </nav>    
+    </nav>  
+    <div class="mx-10 my-10"></div>  
     <router-view />
     <Presentation /> <!--Utilisation du composant-->
   </div>
@@ -37,9 +38,11 @@
 <script>
 import axios from "axios";
 import Presentation from './components/Presentation.vue'; // Chemin du composant
+import Projets from './components/Projets.vue'; 
 export default {
   components: {
-    Presentation // Enregistrement du composant
+    Presentation,
+    Projets, 
   },
   data() {
     return {
