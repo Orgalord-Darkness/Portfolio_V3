@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         // Récupère des données (exemple avec des utilisateurs)
+        $projets = Projet::all();
         $ppe = Projet::getPPE();  // Appel de ta méthode dans le modèle
         $ms = Projet::getMS();
         $pp = Projet::getPP();
@@ -25,6 +26,7 @@ class HomeController extends Controller
         $vignettes = Vignette::all();
         // Retourne les données en réponse JSON
         return response()->json([
+            'projets' => $projets,
             'ppe' => $ppe,
             'ms' => $ms, 
             'pp' => $pp,

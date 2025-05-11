@@ -27,3 +27,7 @@ Route::get('/app', function () {
 Route::get('/projets', function () {
     return file_get_contents(public_path('vue.html'));
 })->where('any', '.*');
+
+Route::get('/parcours', function () {
+    return file_get_contents(public_path('vue.html'));
+})->where('any', '.*');

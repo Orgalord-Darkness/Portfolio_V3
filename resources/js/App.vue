@@ -30,7 +30,6 @@
     </nav>  
     <div class="mx-10 my-10"></div>  
     <router-view />
-    <Presentation /> <!--Utilisation du composant-->
   </div>
   </div>
 </template>
