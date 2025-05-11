@@ -31,3 +31,7 @@ Route::get('/projets', function () {
 Route::get('/parcours', function () {
     return file_get_contents(public_path('vue.html'));
 })->where('any', '.*');
+
+Route::get('/contact', function () {
+    return file_get_contents(public_path('vue.html'));
+})->where('any', '.*');
