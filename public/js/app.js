@@ -28795,20 +28795,32 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Projets',
   data: function data() {
     return {
-      projets: [],
+      ppe: [],
+      ms: [],
+      pp: [],
       vignettes: [],
       apprentissages: [],
       projets_has_apprentissages: [],
-      currentIndex: 0
+      currentIndex: 0,
+      currentIndex2: 0,
+      currentIndex3: 0
     };
   },
   mounted: function mounted() {
     var _this = this;
     axios.get("http://127.0.0.1:8000/api/home").then(function (response) {
-      _this.projets = response.data.projets;
+      _this.ppe = response.data.ppe;
+      _this.ms = response.data.ms;
+      _this.pp = response.data.pp;
       _this.apprentissages = response.data.apprentissages;
       _this.projets_has_apprentissages = response.data.projets_has_apprentissages;
       _this.vignettes = response.data.vignettes;
+      console.log('Projets : ', _this.ppe);
+      console.log('Projets :', _this.ms);
+      console.log('Projets : ', _this.pp);
+      console.log('Apprentissages', _this.apprentissages);
+      console.log('Projets Apprentissages', _this.projets_has_apprentissages);
+      console.log('Vignettes', _this.vignettes);
     })["catch"](function (error) {
       console.error("Erreur lors de la récupération des données :", error);
     });
@@ -28824,14 +28836,36 @@ __webpack_require__.r(__webpack_exports__);
         return a.id === id;
       });
     },
-    scrollTo: function scrollTo(index) {
-      var project = this.$refs.carousel.children[index];
-      if (project) {
-        project.scrollIntoView({
-          behavior: 'smooth',
-          inline: 'center'
-        });
-        this.currentIndex = index;
+    scrollTo: function scrollTo(index, carousel) {
+      // Récupérer l'élément du carrousel correspondant
+      var projectContainer = this.$refs["carousel-inner-".concat(carousel)];
+      if (!projectContainer) return;
+      var items = projectContainer.querySelectorAll('.snap-start');
+      var pagination = document.getElementById("pagination-".concat(carousel));
+      if (!pagination) return;
+      var dots = pagination.querySelectorAll('.dot');
+      var pageCount = document.getElementById("count-page-".concat(carousel));
+
+      // Scroll vers l'élément sélectionné
+      items[index].scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center'
+      });
+
+      // Mettre à jour la pagination
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('bg-[#b30000]', i === index);
+        dot.classList.toggle('bg-gray-300', i !== index);
+      });
+      if (pageCount) {
+        pageCount.textContent = "".concat(index + 1, "/").concat(items.length);
+      }
+
+      // Mettre à jour l'index actif pour Vue
+      if (carousel === 1) {
+        this.currentIndex1 = index;
+      } else {
+        this.currentIndex2 = index;
       }
     }
   }
@@ -29015,14 +29049,97 @@ var _hoisted_12 = {
 };
 var _hoisted_13 = ["onClick"];
 var _hoisted_14 = {
-  "class": "text-gray-700 ml-4"
+  "class": "text-gray-700 ml-4",
+  id: "count-page-1"
+};
+var _hoisted_15 = {
+  "class": "h-screen mt-10"
+};
+var _hoisted_16 = {
+  "class": "relative w-full max-w-5xl mx-auto",
+  id: "carousel-2"
+};
+var _hoisted_17 = {
+  ref: "carousel",
+  "class": "flex overflow-x-hidden snap-x snap-mandatory space-x-6 transition-all duration-500",
+  id: "carousel-inner-2"
+};
+var _hoisted_18 = {
+  "class": "w-1/2 h-70 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden"
+};
+var _hoisted_19 = ["src"];
+var _hoisted_20 = {
+  "class": "w-1/2 flex flex-col justify-between"
+};
+var _hoisted_21 = {
+  "class": "text-2xl font-bold text-[#8a1e1e] text-center"
+};
+var _hoisted_22 = {
+  "class": "text-sm md:text-base text-gray-800 space-y-2 max-w-3xl"
+};
+var _hoisted_23 = {
+  "class": "flex items-start gap-2 flex-wrap"
+};
+var _hoisted_24 = {
+  key: 0
+};
+var _hoisted_25 = ["src"];
+var _hoisted_26 = {
+  "class": "bg-[#ffebe6] flex items-center gap-2 justify-center mt-4",
+  id: "pagination-2"
+};
+var _hoisted_27 = ["onClick"];
+var _hoisted_28 = {
+  "class": "text-gray-700 ml-4",
+  id: "count-page-2"
+};
+var _hoisted_29 = {
+  "class": "h-screen mt-10"
+};
+var _hoisted_30 = {
+  "class": "relative w-full max-w-5xl mx-auto",
+  id: "carousel-3"
+};
+var _hoisted_31 = {
+  ref: "carousel",
+  "class": "flex overflow-x-hidden snap-x snap-mandatory space-x-6 transition-all duration-500",
+  id: "carousel-inner-3"
+};
+var _hoisted_32 = {
+  "class": "w-1/2 h-70 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden"
+};
+var _hoisted_33 = ["src"];
+var _hoisted_34 = {
+  "class": "w-1/2 flex flex-col justify-between"
+};
+var _hoisted_35 = {
+  "class": "text-2xl font-bold text-[#2f6e4d] text-center"
+};
+var _hoisted_36 = {
+  "class": "text-sm md:text-base text-gray-800 space-y-2 max-w-3xl"
+};
+var _hoisted_37 = {
+  "class": "flex items-start gap-2 flex-wrap"
+};
+var _hoisted_38 = {
+  key: 0
+};
+var _hoisted_39 = ["src"];
+var _hoisted_40 = {
+  "class": "bg-[#e6f9e6] flex items-center gap-2 justify-center mt-4",
+  id: "pagination-3"
+};
+var _hoisted_41 = ["onClick"];
+var _hoisted_42 = {
+  "class": "text-gray-700 ml-4",
+  id: "count-page-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Titre du carrousel "), _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Bloc PPE"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Titre du carrousel "), _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mx-auto w-1/2 border-4 border-blue-900 bg-blue-300 px-8 py-3 rounded shadow text-blue-900 text-2xl font-semibold mb-6"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
     "class": "text-center"
-  }, "Projets Personnels Encadrés")], -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Carrousel wrapper "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets, function (projet, index) {
+  }, "Projets Personnels Encadrés")], -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Carrousel wrapper "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.ppe, function (projet, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: index,
       "class": "snap-start bg-[#e6f0ff] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full"
@@ -29052,15 +29169,99 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: "#",
       "class": "bg-[#1e3a8a] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
     }, " Voir la documentation ", -1 /* HOISTED */))])]);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pagination "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets.length, function (dot, index) {
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pagination "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.ppe.length, function (dot, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
       key: index,
       onClick: function onClick($event) {
-        return $options.scrollTo(index);
+        return $options.scrollTo(index, 1);
       },
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-3 h-3 rounded-full transition-all duration-300", [index === $data.currentIndex ? 'bg-[#1e3a8a]' : 'bg-gray-300']])
     }, null, 10 /* CLASS, PROPS */, _hoisted_13);
-  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.currentIndex + 1) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.projets.length), 1 /* TEXT */)])])]);
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.currentIndex + 1) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.ppe.length), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Bloc MS"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Titre du carrousel "), _cache[15] || (_cache[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "mx-auto w-1/2 border-4 border-red-900 bg-red-300 px-8 py-3 rounded shadow text-red-900 text-2xl font-semibold mb-6"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+    "class": "text-center"
+  }, "Projets Personnels Encadrés")], -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Carrousel wrapper "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.ms, function (projet, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: index,
+      "class": "snap-start bg-[#ffebe6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Partie Vignette "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Affichage de l'image de la vignette "), $options.getVignette(projet.id_vignette) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+      key: 0,
+      src: $options.getVignette(projet.id_vignette).chemin,
+      alt: "Vignette du projet",
+      "class": "object-contain w-full h-full"
+    }, null, 8 /* PROPS */, _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Infos du projet "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.nom), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Description :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Responsable :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.chef), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      "class": "font-semibold"
+    }, "Stack :", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets_has_apprentissages.filter(function (r) {
+      return r.id_projet === projet.id;
+    }), function (row) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: row.id_apprentissage
+      }, [$options.getApprentissage(row.id_apprentissage) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.vignettes, function (vignette) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          key: vignette.id
+        }, [vignette.id === $options.getApprentissage(row.id_apprentissage).id_vignette ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+          key: 0,
+          src: vignette.chemin,
+          alt: "Apprentissage",
+          "class": "h-20 w-20 object-contain rounded"
+        }, null, 8 /* PROPS */, _hoisted_25)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Github :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.github || 'Pas de github'), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Durée :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.duree) + " heures", 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Bilan :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.bilan), 1 /* TEXT */)])]), _cache[14] || (_cache[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      href: "#",
+      "class": "bg-[#8a1e1e] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition"
+    }, " Voir la documentation ", -1 /* HOISTED */))])]);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pagination "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.ms.length, function (dot, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: index,
+      onClick: function onClick($event) {
+        return $options.scrollTo(index, 2);
+      },
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-3 h-3 rounded-full transition-all duration-300", [index === $data.currentIndex2 ? 'bg-[#8a1e1e]' : 'bg-gray-300']])
+    }, null, 10 /* CLASS, PROPS */, _hoisted_27);
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.currentIndex2 + 1) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.ms.length), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Bloc PP"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Titre du carrousel "), _cache[23] || (_cache[23] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "mx-auto w-1/2 border-4 border-green-900 bg-green-300 px-8 py-3 rounded shadow text-green-900 text-2xl font-semibold mb-6"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+    "class": "text-center"
+  }, "Projets Personnels")], -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Carrousel wrapper "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.pp, function (projet, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: index,
+      "class": "snap-start bg-[#e6f9e6] rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Partie Vignette "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Affichage de l'image de la vignette "), $options.getVignette(projet.id_vignette) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+      key: 0,
+      src: $options.getVignette(projet.id_vignette).chemin,
+      alt: "Vignette du projet",
+      "class": "object-contain w-full h-full"
+    }, null, 8 /* PROPS */, _hoisted_33)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Infos du projet "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.nom), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Description :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Responsable :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.chef), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      "class": "font-semibold"
+    }, "Stack :", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.projets_has_apprentissages.filter(function (r) {
+      return r.id_projet === projet.id;
+    }), function (row) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: row.id_apprentissage
+      }, [$options.getApprentissage(row.id_apprentissage) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_38, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.vignettes, function (vignette) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          key: vignette.id
+        }, [vignette.id === $options.getApprentissage(row.id_apprentissage).id_vignette ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+          key: 0,
+          src: vignette.chemin,
+          alt: "Apprentissage",
+          "class": "h-20 w-20 object-contain rounded"
+        }, null, 8 /* PROPS */, _hoisted_39)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Github :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.github || 'Pas de github'), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Durée :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.duree) + " heures", 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Bilan :", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(projet.bilan), 1 /* TEXT */)])]), _cache[22] || (_cache[22] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      href: "#",
+      "class": "bg-[#2f6e4d] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition"
+    }, " Voir la documentation ", -1 /* HOISTED */))])]);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pagination "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.pp.length, function (dot, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: index,
+      onClick: function onClick($event) {
+        return $options.scrollTo(index, 3);
+      },
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-3 h-3 rounded-full transition-all duration-300", [index === $data.currentIndex3 ? 'bg-[#2f6e4d]' : 'bg-gray-300']])
+    }, null, 10 /* CLASS, PROPS */, _hoisted_41);
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.currentIndex3 + 1) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.pp.length), 1 /* TEXT */)])])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -31091,7 +31292,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.snap-x[data-v-8726e9e8] {\r\n  scroll-snap-type: x mandatory;\n}\n.snap-start[data-v-8726e9e8] {\r\n  scroll-snap-align: center;\n}\n#carousel-1[data-v-8726e9e8] {\r\n  padding-bottom: 20px; /* Ajout d'un padding pour que le carrousel n'ait pas de marge interne */\n}\n#carousel-inner-1[data-v-8726e9e8] {\r\n  margin: 0; /* Supprimer la marge interne du carrousel */\n}\n#pagination-1[data-v-8726e9e8] {\r\n  padding: 10px 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.snap-x[data-v-8726e9e8] {\r\n  scroll-snap-type: x mandatory;\n}\n.snap-start[data-v-8726e9e8] {\r\n  scroll-snap-align: center;\n}\n#carousel-1[data-v-8726e9e8] {\r\n  padding-bottom: 20px; /* Ajout d'un padding pour que le carrousel n'ait pas de marge interne */\n}\n#carousel-inner-1[data-v-8726e9e8] {\r\n  margin: 0; /* Supprimer la marge interne du carrousel */\n}\n#pagination-1[data-v-8726e9e8] {\r\n  padding: 10px 0;\n}\n#carousel-2[data-v-8726e9e8] {\r\n  padding-bottom: 20px; /* Ajout d'un padding pour que le carrousel n'ait pas de marge interne */\n}\n#carousel-inner-2[data-v-8726e9e8] {\r\n  margin: 0; /* Supprimer la marge interne du carrousel */\n}\n#pagination-2[data-v-8726e9e8] {\r\n  padding: 10px 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

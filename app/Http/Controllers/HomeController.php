@@ -25,7 +25,7 @@ class HomeController extends Controller
         $vignettes = Vignette::all();
         // Retourne les données en réponse JSON
         return response()->json([
-            'projets' => $ppe,
+            'ppe' => $ppe,
             'ms' => $ms, 
             'pp' => $pp,
             'apprentissages' => $apprentissages,
