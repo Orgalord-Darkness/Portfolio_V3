@@ -26,7 +26,9 @@
       <router-link to="/projets" class="text-gray-800 hover:text-blue-600 transition">Projets</router-link>
       <router-link to="/parcours" class="text-gray-800 hover:text-blue-600 transition">Parcours</router-link>
       <router-link to="/certifications" class="text-gray-800 hover:text-blue-600 transition">Certifications</router-link>
-      <router-link to="/contact" class="text-gray-800 hover:text-blue-600 transition">Contact</router-link>
+      <!-- <router-link to="/contact" class="text-gray-800 hover:text-blue-600 transition">Contact</router-link> -->
+      <a href="/contact" class="text-blue-600 hover:text-blue-800">Formulaire de contact</a>
+
     </nav>  
     <div class="mx-10 my-10"></div>  
     <router-view />
