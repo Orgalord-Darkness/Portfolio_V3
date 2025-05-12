@@ -11,10 +11,12 @@
         MonPortfolio
       </div>
       <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
-        <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
         <a href="/app" class="hover:text-blue-600 transition">Accueil</a>
+        <a href="https://github.com/Orgalord-Darkness" class="hover:text-blue-600 transition">Github</a>
+        <a href="/storage/fichiers/RGPD.pdf" class="hover:text-blue-600 transition" download="">RGPD<i class="fa-solid fa-upload"></i></a>
+        <a href="/storage/fichiers/mentionslegales.pdf" class="hover:text-blue-600 transition" download="">Mentions légales<i class="fa-solid fa-upload"></i></a>
+        <a href="https://www.figma.com/design/MK203PiQbB21mMhl1cq9P6/PortfolioV3?node-id=0-1&p=f&t=kM3vBuKExhrk56FG-0" class="hover:text-blue-600 transition">Maquette figma</a>
         <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
-    </nav>
       </nav>
     </aside>
 

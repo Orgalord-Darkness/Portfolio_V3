@@ -40,7 +40,7 @@
                 <img
                   v-if="getVignette(apprentissage.id_vignette)"
                   :src="getVignette(apprentissage.id_vignette).chemin"
-                  class="w-12 h-12 rounded-full border object-contain"
+                  class="w-12 h-12 rounded-full border object-contain hover:bg-blue-300 hover:border-blue-500"
                   alt="Vignette"
                 />
               </div>
@@ -58,7 +58,7 @@
                 <img
                   v-if="getVignette(apprentissage.id_vignette)"
                   :src="getVignette(apprentissage.id_vignette).chemin"
-                  class="w-12 h-12 rounded-full border object-contain"
+                  class="w-12 h-12 rounded-full border object-contain hover:bg-blue-300 hover:border-blue-500"
                   alt="Vignette"
                 />
                 <span class="text-sm font-semibold text-gray-700">{{ apprentissage.libelle }}</span>

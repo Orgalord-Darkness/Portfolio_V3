@@ -139,7 +139,7 @@ class ApprentissageSeeder extends Seeder
                 'description'=>'J\'ai découvert VueJS pour me préparer aux POC d\'offres d\'alternances.',
                 'commencement'=>'2025-03-13',
                 'fin'=>'2025-03-27',
-                'id_vignette'=>23, 
+                'id_vignette'=>24, 
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
