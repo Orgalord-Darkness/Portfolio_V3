@@ -37,8 +37,8 @@ class FichierSeeder extends Seeder
             [
                 'id'=>3,
                 'nom'=>'TypeScript',
-                'chemin' => '/storage/fichiers/certification_TypeScript.png',
-                'extension'=>'png',
+                'chemin' => '/storage/fichiers/certification_TypeScript.pdf',
+                'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),
                 'updated_at'=>now(),
@@ -46,8 +46,8 @@ class FichierSeeder extends Seeder
             [
                 'id'=>4,
                 'nom'=>'VueJS',
-                'chemin' => '/storage/fichiers/certification_VueJS.png',
-                'extension'=>'png',
+                'chemin' => '/storage/fichiers/certification_VueJS.pdf',
+                'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),
                 'updated_at'=>now(),
@@ -55,8 +55,8 @@ class FichierSeeder extends Seeder
             [
                 'id'=>5,
                 'nom'=>'Symfony',
-                'chemin' => '/storage/fichiers/certification_Symfony.png',
-                'extension'=>'png',
+                'chemin' => '/storage/fichiers/certification_Symfony.pdf',
+                'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),
                 'updated_at'=>now(),
@@ -64,8 +64,8 @@ class FichierSeeder extends Seeder
             [
                 'id'=>6,
                 'nom'=>'Pix',
-                'chemin' => '/storage/fichiers/certification-pix-Heddy-Mameri.png',
-                'extension'=>'png',
+                'chemin' => '/storage/fichiers/certification-pix-Heddy-Mameri.pdf',
+                'extension'=>'pdf',
                 'taille'=>130,
                 'created_at'=>now(),
                 'updated_at'=>now(),
