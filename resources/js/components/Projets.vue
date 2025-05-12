@@ -75,7 +75,7 @@
                     </div>
                   </div>
                 </div>
-                <p><strong>Github :</strong> {{ projet.github || 'Pas de github' }}</p>
+                <a :href="projet.github"><strong>Github :</strong> {{ projet.github || 'Pas sur github' }}</a>
                 <p><strong>Durée :</strong> {{ projet.duree }} heures</p>
                 <p><strong>Bilan :</strong> {{ projet.bilan }}</p>
               </div>

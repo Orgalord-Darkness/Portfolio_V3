@@ -35,32 +35,35 @@
     <!-- Liens de navigation -->
     <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
         <a href="/app" class="hover:text-blue-600 transition">Accueil</a>
-        <a href="#projets" class="hover:text-blue-600 transition">Projets</a>
-        <a href="#parcours" class="hover:text-blue-600 transition">Parcours</a>
-        <a href="#certifications" class="hover:text-blue-600 transition">Certifications</a>
-        <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
+        <a href="" class="hover:text-blue-600 transition">Github</a>
+        <a href="" class="hover:text-blue-600 transition">Github</a>
     </nav>
 </aside>
- <nav class="bg-white shadow-lg py-4 flex justify-center space-x-6 border-b border-gray-300">
-    <a href="/app" class="text-blue-700 hover:text-blue-600 transition">Accueil</a>
-    <a href="/projets" class="text-gray-800 hover:text-blue-600 transition">Projets</a>
-    <a href="/parcours" class="text-gray-800 hover:text-blue-600 transition">Parcours</a>
-    <a href="/certifications" class="text-gray-800 hover:text-blue-600 transition">Certifications</a>
-    <a href="/contact" class="text-blue-600 hover:text-blue-800">Formulaire de contact</a>
-</nav>  
 
-    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
-        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Formulaire de Contact</h2>
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
+        <h2 class="text-2xl font-semibold w-full text-center text-gray-800 mb-6">Formulaire de Contact</h2>
+        @if(session('success'))
+            <div class="mb-4 p-4 text-green-800 bg-green-100 border border-green-500 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="mb-4 p-4 text-red-800 bg-red-100 border border-red-500 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <!-- Formulaire de Contact -->
         <form action="{{ route('contact.store') }}" method="POST">
             @csrf
-            <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Nom -->
                 <div>
                     <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
-                    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     @error('nom')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                     @enderror
@@ -69,17 +72,8 @@
                 <!-- Prénom -->
                 <div>
                     <label for="prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
-                    <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     @error('prenom')
-                        <p class="text-sm text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Téléphone -->
-                <div>
-                    <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                    <input type="tel" name="telephone" id="telephone" value="{{ old('telephone') }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    @error('telephone')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
@@ -87,7 +81,7 @@
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     @error('email')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                     @enderror
@@ -96,29 +90,42 @@
                 <!-- Société -->
                 <div>
                     <label for="societe" class="block text-sm font-medium text-gray-700">Société</label>
-                    <input type="text" name="societe" id="societe" value="{{ old('societe') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" name="societe" id="societe" value="{{ old('societe') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     @error('societe')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Message -->
-                <div>
+                <div class="md:col-span-2">
                     <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                    <textarea name="message" id="message" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('message') }}</textarea>
+                    <textarea name="message" id="message" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">{{ old('message') }}</textarea>
                     @error('message')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Submit Button -->
-                <div class="mt-6">
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="md:col-span-2">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500">
                         Envoyer
                     </button>
                 </div>
             </div>
         </form>
     </div>
+
+
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("toggle-sidebar");
+        const sidebar = document.getElementById("sidebar");
+
+        toggleButton.addEventListener("click", function () {
+            sidebar.classList.toggle("translate-x-[-100%]");
+        });
+    });
+</script>
+
 </html>

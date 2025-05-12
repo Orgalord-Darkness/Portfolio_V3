@@ -11,22 +11,20 @@
         MonPortfolio
       </div>
       <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
-        <a href="#presentation" class="hover:text-blue-600 transition">Présentation</a>
-        <a href="#projets" class="hover:text-blue-600 transition">Projets</a>
-        <a href="#parcours" class="hover:text-blue-600 transition">Parcours</a>
-        <a href="#certifications" class="hover:text-blue-600 transition">Certifications</a>
-        <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
+        <a href="/app" class="hover:text-blue-600 transition">Accueil</a>
+        <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
+    </nav>
       </nav>
     </aside>
 
     <div class="flex flex-col min-h-screen">
       <!-- Barre de navigation -->
       <nav class="bg-white shadow-lg py-4 flex justify-center space-x-6 border-b border-gray-300">
-        <router-link to="/app" class="text-blue-700 hover:text-blue-600 transition">Accueil</router-link>
-        <router-link to="/projets" class="text-gray-800 hover:text-blue-600 transition">Projets</router-link>
-        <router-link to="/parcours" class="text-gray-800 hover:text-blue-600 transition">Parcours</router-link>
-        <router-link to="/certifications" class="text-gray-800 hover:text-blue-600 transition">Certifications</router-link>
-        <a href="/contact" class="text-blue-600 hover:text-blue-800">Formulaire de contact</a>
+        <router-link to="/app" class="text-gray-700 hover:text-green-600 transition">Accueil</router-link>
+        <router-link to="/projets" class="text-gray-800 hover:text-green-600 transition">Projets</router-link>
+        <router-link to="/parcours" class="text-gray-800 hover:text-green-600 transition">Parcours</router-link>
+        <router-link to="/certifications" class="text-gray-800 hover:text-green-600 transition">Certifications</router-link>
       </nav>
 
       <div class="mx-10 my-10"></div>
