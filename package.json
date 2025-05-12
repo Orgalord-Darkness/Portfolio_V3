@@ -10,12 +10,18 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "@babel/plugin-transform-class-properties": "^7.27.1",
+        "@babel/plugin-transform-nullish-coalescing-operator": "^7.27.1",
+        "@babel/plugin-transform-optional-chaining": "^7.27.1",
+        "@vue/compiler-sfc": "^3.5.13",
+        "axios": "^1.9.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "vue": "^3.5.13",
+        "vue-loader": "^17.4.2"
     },
     "dependencies": {
-        "vue": "^3.5.13"
+        "vue-router": "^4.5.1"
     }
 }

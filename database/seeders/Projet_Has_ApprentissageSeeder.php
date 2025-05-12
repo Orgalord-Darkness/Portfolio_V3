@@ -101,7 +101,7 @@ class Projet_Has_ApprentissageSeeder extends Seeder
             //Projet 6 heure_developpement
             [
                 'id' => 12, 
-                'id_projet' => 5,
+                'id_projet' => 6,
                 'id_apprentissage' => 3, 
                 'created_at' => now(),
                 'updated_at' => now(),
