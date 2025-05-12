@@ -41,6 +41,13 @@
         <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
     </nav>
 </aside>
+ <nav class="bg-white shadow-lg py-4 flex justify-center space-x-6 border-b border-gray-300">
+    <a href="/app" class="text-blue-700 hover:text-blue-600 transition">Accueil</a>
+    <a href="/projets" class="text-gray-800 hover:text-blue-600 transition">Projets</a>
+    <a href="/parcours" class="text-gray-800 hover:text-blue-600 transition">Parcours</a>
+    <a href="/certifications" class="text-gray-800 hover:text-blue-600 transition">Certifications</a>
+    <a href="/contact" class="text-blue-600 hover:text-blue-800">Formulaire de contact</a>
+</nav>  
 
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
         <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Formulaire de Contact</h2>

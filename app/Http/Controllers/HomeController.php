@@ -6,6 +6,8 @@ use App\Models\Projet;
 use App\Models\Vignette; 
 use App\Models\Apprentissage; 
 use App\Models\Fichier; 
+use App\Models\Certification; 
+use App\Models\Documentation; 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,8 +24,11 @@ class HomeController extends Controller
         $apprentissages = Apprentissage::all();
         $projets_has_apprentissages = Projet::getProjetWithApprentissage();
         $avatar = Fichier::getAvatar();
+        $fichiers = Fichier::all();
         // Retourne la vue et passe la variable $projets
         $vignettes = Vignette::all();
+        $certifications = Certification::all();
+        $documentations = Documentation::all();
         // Retourne les données en réponse JSON
         return response()->json([
             'projets' => $projets,
@@ -34,6 +39,10 @@ class HomeController extends Controller
             'vignettes' => $vignettes,
             'avatar' => $avatar,
             'projets_has_apprentissages' => $projets_has_apprentissages,
+            'certifications' => $certifications,
+            'fichiers' => $fichiers,
+            'documentations' => $documentations, 
+
         ]);
     }
 
