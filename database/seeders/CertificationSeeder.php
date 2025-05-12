@@ -14,7 +14,7 @@ class CertificationSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('apprentissages')->insert([
+        DB::table('certifications')->insert([
             [
                 'id'=>1,
                 'libelle'=>'Voltaire',
@@ -35,7 +35,7 @@ class CertificationSeeder extends Seeder
                 'commencement'=>'2024-12-01',
                 'fin'=>'2025-01-05',
                 'id_vignette'=>23, 
-                'id_fichier'=> 1,
+                'id_fichier'=> 6,
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
@@ -46,8 +46,8 @@ class CertificationSeeder extends Seeder
                 'description'=>'J\'ai fait cette certification par curiosité',
                 'commencement'=>'2025-01-03',
                 'fin'=>'2025-01-05',
-                'id_vignette'=>16, 
-                'id_fichier'=> 1,
+                'id_vignette'=>27, 
+                'id_fichier'=> 3,
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
@@ -59,19 +59,19 @@ class CertificationSeeder extends Seeder
                 'commencement'=>'2024-07-01',
                 'fin'=>'2025-04-29',
                 'id_vignette'=>10, 
-                'id_fichier'=> 1,
+                'id_fichier'=> 5,
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
             [
-                'id'=>4,
+                'id'=>5,
                 'libelle'=>'VueJS',
                 'source' => 'Openclassroom',
                 'description'=>'J\'ai fait cette certification pour passer un POC dans le cadre de ma candidature en alternance',
                 'commencement'=>'2025-03-15',
                 'fin'=>'2025-03-24',
-                'id_vignette'=>25, 
-                'id_fichier'=> 1,
+                'id_vignette'=>24, 
+                'id_fichier'=> 4,
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],

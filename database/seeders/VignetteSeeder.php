@@ -251,6 +251,15 @@ class VignetteSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>27,
+                'nom'=>'typescript',
+                'chemin' => '/storage/vignettes/typescript.png',
+                'extension'=>'png',
+                'taille'=>2537,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
             
         ]);
     }

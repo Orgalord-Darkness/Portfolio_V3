@@ -34,6 +34,44 @@ class FichierSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>3,
+                'nom'=>'TypeScript',
+                'chemin' => '/storage/fichiers/certification_TypeScript.png',
+                'extension'=>'png',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>4,
+                'nom'=>'VueJS',
+                'chemin' => '/storage/fichiers/certification_VueJS.png',
+                'extension'=>'png',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>5,
+                'nom'=>'Symfony',
+                'chemin' => '/storage/fichiers/certification_Symfony.png',
+                'extension'=>'png',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>6,
+                'nom'=>'Pix',
+                'chemin' => '/storage/fichiers/certification-pix-Heddy-Mameri.png',
+                'extension'=>'png',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            
+            
         ]);
     }
 }
