@@ -107,10 +107,10 @@
   <!-- Documentation Modal -->
   <div
     v-if="selectedProjetId !== null"
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
     @click.self="closeModal"
   >
-    <div class="p-8 rounded-lg shadow-xl w-96 text-center space-y-4">
+    <div class="p-8 rounded-lg shadow-xl w-96 text-center space-y-4 bg-white">
       <h2
         v-if="selectedProject"
         class="bg-cyan-500 text-white font-bold py-2 px-4 rounded"

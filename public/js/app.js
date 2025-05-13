@@ -29485,7 +29485,7 @@ var _hoisted_14 = {
   "class": "text-gray-700 ml-4"
 };
 var _hoisted_15 = {
-  "class": "p-8 rounded-lg shadow-xl w-96 text-center space-y-4"
+  "class": "p-8 rounded-lg shadow-xl w-96 text-center space-y-4 bg-white"
 };
 var _hoisted_16 = {
   key: 0,
@@ -29573,7 +29573,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.currentIndexes[i] + 1) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(carrousel.data.length), 1 /* TEXT */)], 2 /* CLASS */)])]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Documentation Modal "), $data.selectedProjetId !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
-    "class": "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+    "class": "fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.closeModal && $options.closeModal.apply($options, arguments);
     }, ["self"]))
