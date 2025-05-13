@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     // Récupération des données depuis l'API
-    axios.get("http://127.0.0.1:8000/api/home")
+    axios.get('https://hmameri.lyceestvincent.fr/api/home')
       .then(response => {
         // Mettre à jour les données
         this.projets = response.data.projets;

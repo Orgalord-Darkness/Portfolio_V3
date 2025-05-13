@@ -34,7 +34,7 @@
     };
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/home")
+    axios.get('https://hmameri.lyceestvincent.fr/api/home')
       .then(response => {
         this.avatar = response.data.avatar;
         console.log("Avatar :", this.avatar);

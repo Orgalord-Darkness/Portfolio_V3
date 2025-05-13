@@ -36,10 +36,6 @@ Route::get('/certifications', function () {
     return file_get_contents(public_path('vue.html'));
 })->where('any', '.*');
 
-// Route::get('/contact', function () {
-//     return file_get_contents(public_path('vue.html'));
-// })->where('any', '.*');
-// Dans routes/web.php
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');

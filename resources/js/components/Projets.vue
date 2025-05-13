@@ -219,7 +219,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/home")
+    axios.get('https://hmameri.lyceestvincent.fr/api/home')
       .then(response => {
         this.ppe = response.data.ppe;
         this.ms = response.data.ms;
