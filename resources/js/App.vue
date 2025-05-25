@@ -95,6 +95,13 @@
         <a href="https://www.figma.com/design/MK203PiQbB21mMhl1cq9P6/PortfolioV3?node-id=0-1&p=f&t=kM3vBuKExhrk56FG-0" class="hover:text-blue-600 transition">Maquette Figma</a>
         <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
       </nav>
+      <p class="text-center text-xs text-gray-400 mt-4">
+        <strong>Musique de fond</strong><br>
+        Titre : Sakura Night Whispers<br> 
+        Source : Stocktune<br>
+        Lien : https://stocktune.com/free-music/sakura-night-whispers-223580-136774<br>
+        Licence : Domaine public
+      </p>
       <p class="text-xs text-gray-400 mt-4">© {{ currentYear }} MonPortfolio – Tous droits réservés</p>
     </div>
   </footer>
