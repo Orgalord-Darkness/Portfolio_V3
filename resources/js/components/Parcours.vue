@@ -1,4 +1,7 @@
 <template>
+  <h1 class="text-center text-2xl font-bold text-cyan-800 mb-8">
+      Mon Parcours d'Apprentissage
+    </h1>
   <div class="flex bg-white h-screen overflow-hidden">
     <!-- Sidebar -->
     <!-- <aside class="w-full bg-gray-100 p-4 border-r overflow-y-auto">
@@ -113,6 +116,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>

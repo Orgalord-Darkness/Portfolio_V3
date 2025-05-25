@@ -1,5 +1,8 @@
 <template>
-  <div class="h-screen mt-10 space-y-32">
+  <div class=" mt-10 space-y-32">
+    <h1 class="text-center text-2xl font-bold text-cyan-800 mb-8">
+      Mes Projets
+    </h1>
     <div
       v-for="(carrousel, i) in carrousels"
       :key="i"
@@ -160,7 +163,6 @@
       </div>
     </div>
   </div>
-
 
 </template>
 <script>
