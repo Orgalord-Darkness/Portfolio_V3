@@ -29111,10 +29111,19 @@ var _hoisted_4 = {
   key: 0,
   "class": "absolute inset-0 bg-white bg-opacity-50 flex justify-center items-center z-50"
 };
+var _hoisted_5 = {
+  "class": "w-full bg-white shadow-inner mt-10 border-t border-gray-300"
+};
+var _hoisted_6 = {
+  "class": "max-w-screen-lg mx-auto py-6 px-4 flex flex-col items-center space-y-2 text-gray-700 text-sm"
+};
+var _hoisted_7 = {
+  "class": "text-xs text-gray-400 mt-4"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BOUTON TOGGLE "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BOUTON TOGGLE "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.toggleSidebar && $options.toggleSidebar.apply($options, arguments);
     }),
@@ -29159,7 +29168,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mx-10 my-10"
   }, null, -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Affichage du spinner de chargement "), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, _cache[6] || (_cache[6] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "animate-spin rounded-full h-16 w-16 border-t-4 border-blue-700"
-  }, null, -1 /* HOISTED */)]))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Vue du composant "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])]);
+  }, null, -1 /* HOISTED */)]))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Vue du composant "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" FOOTER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"font-bold text-blue-700 text-lg\" data-v-f348271a>MonPortfolio</div><nav class=\"flex flex-wrap justify-center gap-4\" data-v-f348271a><a href=\"/app\" class=\"hover:text-blue-600 transition\" data-v-f348271a>Accueil</a><a href=\"https://github.com/Orgalord-Darkness\" class=\"hover:text-blue-600 transition\" data-v-f348271a>Github</a><a href=\"/storage/fichiers/RGPD.pdf\" class=\"hover:text-blue-600 transition\" download data-v-f348271a>RGPD <i class=\"fa-solid fa-upload\" data-v-f348271a></i></a><a href=\"/storage/fichiers/mentionslegales.pdf\" class=\"hover:text-blue-600 transition\" download data-v-f348271a>Mentions légales <i class=\"fa-solid fa-upload\" data-v-f348271a></i></a><a href=\"https://www.figma.com/design/MK203PiQbB21mMhl1cq9P6/PortfolioV3?node-id=0-1&amp;p=f&amp;t=kM3vBuKExhrk56FG-0\" class=\"hover:text-blue-600 transition\" data-v-f348271a>Maquette Figma</a><a href=\"/contact\" class=\"hover:text-blue-600 transition\" data-v-f348271a>Contact</a></nav>", 2)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, "© " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date().getFullYear()) + " MonPortfolio – Tous droits réservés", 1 /* TEXT */)])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

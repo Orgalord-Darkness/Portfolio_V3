@@ -44,3 +44,14 @@ Route::get('/contact', [ContactController::class, 'index']);
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 Route::post('/api/contact', [ContactController::class, 'store']);
+Route::get('/debug-routes', function () {
+    return collect(Route::getRoutes())->filter(function ($route) {
+        return str_contains($route->uri(), 'admin');
+    })->map(function ($route) {
+        return [
+            'uri' => $route->uri(),
+            'methods' => $route->methods(),
+            'action' => $route->getActionName(),
+        ];
+    });
+});
