@@ -70,6 +70,24 @@ class FichierSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>7,
+                'nom'=>'html/css',
+                'chemin' => '/storage/fichiers/certification_htmlcss_Heddy_Mameri.pdf',
+                'extension'=>'pdf',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>8,
+                'nom'=>'API_REST',
+                'chemin' => '/storage/fichiers/certification_API_REST_Heddy_Mameri.pdf',
+                'extension'=>'pdf',
+                'taille'=>130,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
             
             
         ]);

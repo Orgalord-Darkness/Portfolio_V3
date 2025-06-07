@@ -75,6 +75,30 @@ class CertificationSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>6,
+                'libelle'=>'html/css',
+                'source' => 'Openclassroom',
+                'description'=>'J\'ai fait cette certification pour valider la séquence intégration',
+                'commencement'=>'2023-09-15',
+                'fin'=>'2025-06-06',
+                'id_vignette'=>1, 
+                'id_fichier'=> 7,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id'=>7,
+                'libelle'=>'API REST',
+                'source' => 'Openclassroom',
+                'description'=>'J\'ai fait cette certification par curiosité pour comprendre les API',
+                'commencement'=>'2025-06-01',
+                'fin'=>'2025-06-06',
+                'id_vignette'=>28, 
+                'id_fichier'=> 8,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
         ]);
     }
 }

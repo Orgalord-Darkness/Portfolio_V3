@@ -260,6 +260,15 @@ class VignetteSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>28,
+                'nom'=>'apirest',
+                'chemin' => '/storage/vignettes/api.png',
+                'extension'=>'png',
+                'taille'=>2537,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
             
         ]);
     }
