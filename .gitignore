@@ -1,6 +1,14 @@
 /node_modules
 /public/hot
 /public/storage
+/public/storage2
+/public/build
+/public/js
+/public/css
+/public/mix-manifest.json
+/public/vue.html
+/public/install.php
+/public/unzip.php
 /storage/*.key
 /vendor
 .env
@@ -13,3 +21,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+storage/debugbar/

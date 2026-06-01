@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquer l'accès direct aux dossiers et fichiers sensibles
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+    RewriteRule ^(\.env|composer\.(json|lock)|package(-lock)?\.json|webpack\.mix\.js|artisan)$ - [F,L]
+
+    # Si le fichier ou dossier existe dans public/, le servir directement
+    RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -d
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Racine / → app Vue (vue.html)
+    RewriteRule ^$ public/vue.html [L]
+
+    # Tout le reste → front controller Laravel
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>

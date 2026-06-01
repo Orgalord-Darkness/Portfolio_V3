@@ -19,7 +19,7 @@ class CreateApprentissagesTable extends Migration
             $table->text('description');
             $table->date('commencement');
             $table->date('fin');
-            $table->integer('id_vignette')->index();
+            $table->unsignedBigInteger('id_vignette')->index();
             $table->foreign('id_vignette')->references('id')->on('vignettes')->onDelete('cascade');
             $table->timestamps();
         });

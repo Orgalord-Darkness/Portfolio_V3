@@ -4,36 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function store(Request $request): JsonResponse
     {
-        return view('contact'); // Assurez-vous que le fichier Blade est dans resources/views/contact.blade.php
-    }
-
-   public function store(Request $request)
-    {
-        // Validation des données
-        $validatedData = $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'email' => 'required|email',
-            'societe' => 'nullable|string|max:255',
-            'message' => 'required|string|min:10',
+        $validated = $request->validate([
+            'nom'      => 'required|string|max:100',
+            'prenom'   => 'required|string|max:100',
+            'email'    => 'required|email:rfc,dns|max:255',
+            'societe'  => 'nullable|string|max:255',
+            'telephone'=> 'nullable|string|max:20|regex:/^[0-9\+\-\s\(\)]{7,20}$/',
+            'message'  => 'required|string|min:10|max:2000',
         ]);
 
-        try {
-            // Enregistrement dans la base de données
-            Contact::create($validatedData);
+        Contact::create($validated);
 
-            // Message de succès
-            return redirect()->back()->with('success', 'Votre message a été envoyé avec succès !');
-        } catch (\Exception $e) {
-            // Message d'erreur si l'enregistrement échoue
-            return redirect()->back()->with('error', 'Une erreur est survenue. Veuillez réessayer.');
-        }
+        return response()->json(['message' => 'Votre message a bien été envoyé.'], 201);
     }
-
 }

@@ -16,7 +16,7 @@
         <a href="/storage/fichiers/RGPD.pdf" class="hover:text-blue-600 transition" download="">RGPD<i class="fa-solid fa-upload"></i></a>
         <a href="/storage/fichiers/mentionslegales.pdf" class="hover:text-blue-600 transition" download="">Mentions légales<i class="fa-solid fa-upload"></i></a>
         <a href="https://www.figma.com/design/MK203PiQbB21mMhl1cq9P6/PortfolioV3?node-id=0-1&p=f&t=kM3vBuKExhrk56FG-0" class="hover:text-blue-600 transition">Maquette figma</a>
-        <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
+        <router-link to="/contact" class="hover:text-blue-600 transition">Contact</router-link>
       </nav>
     </aside>
 
@@ -27,72 +27,47 @@
         <router-link to="/projets" class="text-gray-800 hover:text-green-600 transition">Projets</router-link>
         <router-link to="/parcours" class="text-gray-800 hover:text-green-600 transition">Parcours</router-link>
         <router-link to="/certifications" class="text-gray-800 hover:text-green-600 transition">Certifications</router-link>
+        <router-link to="/contact" class="text-gray-800 hover:text-green-600 transition">Contact</router-link>
       </nav>
 
       <div class="mx-10 my-10"></div>
 
-      <!-- Affichage du spinner de chargement -->
+      <!-- Spinner de chargement -->
       <div v-if="loading" class="absolute inset-0 bg-white bg-opacity-50 flex justify-center items-center z-50">
         <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-700"></div>
       </div>
 
-      <!-- Vue du composant -->
       <router-view />
     </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
-import Presentation from './components/Presentation.vue'; // Chemin du composant
-import Projets from './components/Projets.vue'; 
+import axios from 'axios';
+import Presentation from './components/Presentation.vue';
+import Projets from './components/Projets.vue';
 
 export default {
-  components: {
-    Presentation,
-    Projets, 
-  },
+  components: { Presentation, Projets },
   data() {
     return {
       sidebarOpen: false,
-      projets: [],
-      ms: [],
-      pp: [],
-      apprentissages: [],
-      vignettes: [],
-      avatar: '',
-      loading: true // État de chargement ajouté
+      loading: true,
     };
   },
   methods: {
     toggleSidebar() {
       this.sidebarOpen = !this.sidebarOpen;
-    }
+    },
   },
   mounted() {
-    // Récupération des données depuis l'API
-    axios.get("http://127.0.0.1:8000/api/home")
-      .then(response => {
-        // Mettre à jour les données
-        this.projets = response.data.projets;
-        this.ms = response.data.ms;
-        this.pp = response.data.pp;
-        this.apprentissages = response.data.apprentissages;
-        this.vignettes = response.data.vignettes;
-        this.avatar = response.data.avatar;
-
-        console.log("Projets :", this.projets);
-
-        // Une fois les données chargées, désactiver le chargement
-        this.loading = false;
-      })
-      .catch(error => {
-        console.error("Erreur lors de la récupération des données :", error);
-        // En cas d'erreur, vous pouvez aussi désactiver le chargement
-        this.loading = false;
-      });
-  }
+    axios.get('/api/home')
+      .then(() => { this.loading = false; })
+      .catch(() => { this.loading = false; });
+  },
 };
 </script>
+
 <style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -115,18 +90,13 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-/* Style du spinner */
 .animate-spin {
   border-top-color: transparent;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>

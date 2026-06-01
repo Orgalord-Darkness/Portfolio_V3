@@ -15,9 +15,9 @@ class CreateProjetsHasCertificationsTable extends Migration
     {
         Schema::create('projets_has_certifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_projet')->index();
+            $table->unsignedBigInteger('id_projet')->index();
             $table->foreign('id_projet')->references('id')->on('projets')->onDelete('cascade');
-            $table->integer('id_certification')->index();
+            $table->unsignedBigInteger('id_certification')->index();
             $table->foreign('id_certification')->references('id')->on('certifications')->onDelete('cascade');
             $table->timestamps();
         });

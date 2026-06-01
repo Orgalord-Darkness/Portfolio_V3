@@ -17,38 +17,30 @@
         Je m'appelle <strong>Heddy Mameri</strong>, étudiant de 2e année de <strong>BTS SIO SLAM</strong> à l'institut Saint Vincent
       </p>
       <p class="text-blue-900">
-        J’ai appris à être développeur Full Stack, avec des projets en <strong>PHP</strong>, <strong>C#</strong>, <strong>Symfony 7</strong>, <strong>Laravel 12</strong>. 
-        Mon objectif est d'atteindre un master en génie informatique spécialisé en Intelligence Artificielle tout en conservant mes compétences Full Stack. 
+        J'ai appris à être développeur Full Stack, avec des projets en <strong>PHP</strong>, <strong>C#</strong>, <strong>Symfony 7</strong>, <strong>Laravel 12</strong>.
+        Mon objectif est d'atteindre un master en génie informatique spécialisé en Intelligence Artificielle tout en conservant mes compétences Full Stack.
       </p>
     </div>
   </div>
 </div>
 </template>
-  
-  <script>
-  export default {
-    name: 'Presentation',
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'Presentation',
   data() {
-    return {
-      avatar: ''
-    };
+    return { avatar: '' };
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/home")
-      .then(response => {
-        this.avatar = response.data.avatar;
-        console.log("Avatar :", this.avatar);
-      })
-      .catch(error => {
-        console.error("Erreur lors de la récupération des données :", error);
-      });
-  }
-}
-  </script>
-  
-  <style scoped>
-  h1 {
-    color: #42b983;
-  }
-  </style>
-  
+    axios.get('/api/home')
+      .then(response => { this.avatar = response.data.avatar; })
+      .catch(() => {});
+  },
+};
+</script>
+
+<style scoped>
+h1 { color: #42b983; }
+</style>

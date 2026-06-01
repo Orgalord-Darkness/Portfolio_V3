@@ -20,9 +20,9 @@ class CreateCertificationsTable extends Migration
             $table->string('source');
             $table->date('commencement');
             $table->date('fin');
-            $table->integer('id_vignette')->index();
+            $table->unsignedBigInteger('id_vignette')->index();
             $table->foreign('id_vignette')->references('id')->on('vignettes')->onDelete('cascade');
-            $table->integer('id_fichier')->index();
+            $table->unsignedBigInteger('id_fichier')->index();
             $table->foreign('id_fichier')->references('id')->on('fichiers')->onDelete('cascade');
 
             $table->timestamps();

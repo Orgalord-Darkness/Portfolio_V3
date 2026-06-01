@@ -1,0 +1,42 @@
+# Docker Compose — environnement LOCAL uniquement (ne pas déployer en prod)
+# Usage : docker compose up -d
+# phpMyAdmin : http://localhost:8008
+# DB host dans .env : DB_HOST=127.0.0.1  DB_PORT=3309
+
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: portfolio_db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_local}
+      MARIADB_DATABASE: ${DB_DATABASE:-portfolio}
+      MARIADB_USER: ${DB_USERNAME:-portfolio}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-portfolio_local}
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: portfolio_pma
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD:-root_local}
+    ports:
+      - "8008:80"
+
+volumes:
+  db_data:

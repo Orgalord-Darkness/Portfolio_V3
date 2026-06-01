@@ -18,6 +18,7 @@ class Contact extends Model
         'prenom',
         'societe',
         'email',
-        'message'
+        'telephone',
+        'message',
     ];
 }

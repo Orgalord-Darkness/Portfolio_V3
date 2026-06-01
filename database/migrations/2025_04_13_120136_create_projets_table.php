@@ -25,7 +25,7 @@ class CreateProjetsTable extends Migration
             $table->text('bilan');
             $table->string('type');
             $table->integer('ordre');
-            $table->integer('id_vignette')->index();
+            $table->unsignedBigInteger('id_vignette')->index();
             $table->foreign('id_vignette')->references('id')->on('vignettes')->onDelete('cascade');
             $table->timestamps();
         });

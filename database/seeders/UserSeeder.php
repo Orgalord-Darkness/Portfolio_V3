@@ -2,29 +2,33 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
-        DB::table('users')->insert([
-            [
-                'id'=>1,
-                'name'=>'MAMERI',
-                'email' => 'heddy.mameri@gmail.com',
-                'password'=>Hash::make('?Orga123/.'),
-                'created_at'=>now(),
-                'updated_at'=>now(),
-            ]
-        ]);
+        $email    = env('ADMIN_EMAIL');
+        $password = env('ADMIN_PASSWORD');
+        $name     = env('ADMIN_NAME', 'Admin');
 
+        if (!$email || !$password) {
+            $this->command->error('ADMIN_EMAIL et ADMIN_PASSWORD doivent être définis dans .env avant de lancer le seeder.');
+            return;
+        }
+
+        DB::table('users')->updateOrInsert(
+            ['email' => $email],
+            [
+                'name'       => $name,
+                'email'      => $email,
+                'password'   => Hash::make($password),
+                'is_admin'   => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
     }
 }

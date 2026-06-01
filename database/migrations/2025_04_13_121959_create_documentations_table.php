@@ -19,7 +19,7 @@ class CreateDocumentationsTable extends Migration
             $table->string('chemin');
             $table->string('extension');
             $table->float('taille');
-            $table->integer('id_projet')->index();
+            $table->unsignedBigInteger('id_projet')->index();
             $table->foreign('id_projet')->references('id')->on('projets')->onDelete('cascade');
             $table->timestamps();
         });

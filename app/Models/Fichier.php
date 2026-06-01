@@ -43,7 +43,7 @@ class Fichier extends Model
         ->select('fichiers.chemin')
         ->first();
 
-        return $fichier->chemin; 
+        return $fichier?->chemin ?? null;
      }
 
 

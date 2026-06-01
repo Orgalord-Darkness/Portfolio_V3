@@ -219,7 +219,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/home")
+    axios.get("/api/home")
       .then(response => {
         this.ppe = response.data.ppe;
         this.ms = response.data.ms;
@@ -229,9 +229,7 @@ export default {
         this.vignettes = response.data.vignettes;
         this.documentations = response.data.documentations;
       })
-      .catch(error => {
-        console.error("Erreur lors de la récupération des données :", error);
-      });
+      .catch(() => {});
       this.$nextTick(() => {
         this.carrousels.forEach((_, i) => {
           const ref = this.$refs['carouselInner' + i]?.[0];
