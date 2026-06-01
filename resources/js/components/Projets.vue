@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen mt-10 space-y-32">
+  <div class="mt-10 space-y-32 pb-16">
     <div
       v-for="(carrousel, i) in carrousels"
       :key="i"
@@ -56,24 +56,14 @@
                 <p><strong>Responsable :</strong> {{ projet.chef }}</p>
                 <div class="flex items-start gap-2 flex-wrap">
                   <span class="font-semibold">Stack :</span>
-                  <div
+                  <img
                     v-for="row in projets_has_apprentissages.filter(r => r.id_projet === projet.id)"
                     :key="row.id_apprentissage"
-                  >
-                    <div v-if="getApprentissage(row.id_apprentissage)">
-                      <div
-                        v-for="vignette in vignettes"
-                        :key="vignette.id"
-                      >
-                        <img
-                          v-if="vignette.id === getApprentissage(row.id_apprentissage).id_vignette"
-                          :src="vignette.chemin"
-                          alt="Apprentissage"
-                          class="h-20 w-20 object-contain rounded"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                    :src="row.chemin"
+                    :alt="row.libelle"
+                    :title="row.libelle"
+                    class="h-14 w-14 object-contain rounded"
+                  />
                 </div>
                 <a :href="projet.github"><strong>Github :</strong> {{ projet.github || 'Pas sur github' }}</a>
                 <p><strong>Durée :</strong> {{ projet.duree }} heures</p>
@@ -219,7 +209,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api/home")
+    axios.get('/api/home')
       .then(response => {
         this.ppe = response.data.ppe;
         this.ms = response.data.ms;
@@ -228,17 +218,17 @@ export default {
         this.projets_has_apprentissages = response.data.projets_has_apprentissages;
         this.vignettes = response.data.vignettes;
         this.documentations = response.data.documentations;
+
+        this.$nextTick(() => {
+          this.carrousels.forEach((_, i) => {
+            const ref = this.$refs['carouselInner' + i]?.[0];
+            if (ref) {
+              ref.addEventListener('scroll', () => this.handleScroll(i));
+            }
+          });
+        });
       })
       .catch(() => {});
-      this.$nextTick(() => {
-        this.carrousels.forEach((_, i) => {
-          const ref = this.$refs['carouselInner' + i]?.[0];
-          if (ref) {
-            ref.addEventListener('scroll', () => this.handleScroll(i));
-          }
-        });
-      });
-
   },
   methods: {
     getVignette(id) {
@@ -278,7 +268,7 @@ export default {
       });
 
       if (this.currentIndexes[carrouselIndex] !== closestIndex) {
-        this.currentIndexes[carrouselIndex] = closestIndex;  // Directly mutate for reactivity test
+        this.currentIndexes[carrouselIndex] = closestIndex;
       }
     },
 
