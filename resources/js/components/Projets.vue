@@ -248,7 +248,7 @@ export default {
         carousel.scrollTo({ left: offsetLeft, behavior: 'smooth' });
 
         // Mise à jour du currentIndex pour le carrousel actuel
-        this.$set(this.currentIndexes, carrouselIndex, index);
+        this.currentIndexes[carrouselIndex] = index;
       }
     },
     handleScroll(carrouselIndex) {

@@ -10,9 +10,6 @@
     RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -d
     RewriteRule ^(.*)$ public/$1 [L]
 
-    # Racine / → app Vue (vue.html)
-    RewriteRule ^$ public/vue.html [L]
-
     # Tout le reste → front controller Laravel
     RewriteRule ^(.*)$ public/index.php [L]
 </IfModule>

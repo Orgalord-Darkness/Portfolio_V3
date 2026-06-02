@@ -14,7 +14,7 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/projets-apprentissage', [HomeController::class, 'getProjetWithApprentissage']);
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1');
 
-Route::middleware('auth:sanctum')->get('/download/{filename}', function ($filename) {
+Route::middleware(['auth:sanctum', 'throttle:20,1'])->get('/download/{filename}', function ($filename) {
     $filename = basename($filename);
     $allowed = ['pdf', 'jpg', 'jpeg', 'png'];
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
