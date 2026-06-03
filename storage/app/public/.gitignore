@@ -1,2 +1,17 @@
 *
 !.gitignore
+!vignettes/
+vignettes/*
+!vignettes/*.png
+!vignettes/*.jpg
+!vignettes/*.jpeg
+!vignettes/*.webp
+!vignettes/*.svg
+!fichiers/
+fichiers/*
+!fichiers/*.png
+!fichiers/*.jpg
+!fichiers/*.pdf
+!sons/
+sons/*
+!sons/*.mp3
