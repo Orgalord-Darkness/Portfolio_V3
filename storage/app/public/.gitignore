@@ -12,3 +12,6 @@ fichiers/*
 !fichiers/*.png
 !fichiers/*.jpg
 !fichiers/*.pdf
+!sons/
+sons/*
+!sons/*.mp3
