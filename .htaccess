@@ -1,5 +1,4 @@
 <IfModule mod_rewrite.c>
-    Options +FollowSymLinks
     RewriteEngine On
 
     # Si le fichier ou dossier existe dans public/, le servir directement
