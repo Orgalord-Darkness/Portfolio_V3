@@ -1,17 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Servir les fichiers storage directement via le symlink public/storage
-    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
-
     # Si le fichier ou dossier existe dans public/, le servir directement
     RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -f [OR]
     RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -d
     RewriteRule ^(.*)$ public/$1 [L]
-
-    # Bloquer l'accès direct aux dossiers et fichiers sensibles
-    RewriteRule ^(app|bootstrap|config|database|resources|routes|tests|vendor)(/|$) - [F,L]
-    RewriteRule ^(\.env|composer\.(json|lock)|package(-lock)?\.json|webpack\.mix\.js|artisan)$ - [F,L]
 
     # Tout le reste → front controller Laravel
     RewriteRule ^(.*)$ public/index.php [L]
