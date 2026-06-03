@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Servir les fichiers storage directement via le symlink public/storage
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
+
     # Si le fichier ou dossier existe dans public/, le servir directement
     RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -f [OR]
     RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -d
