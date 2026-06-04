@@ -17,9 +17,10 @@
         Je m'appelle <strong>Heddy Mameri</strong>, <strong>étudiant en Bachelor de coordination de projet web </strong> au CFA Saint Vincent.
       </p>
       <p class="text-blue-900">
-        J'ai appris à être développeur Full Stack, avec des projets en <strong>PHP</strong>, <strong>C#</strong>, <strong>Symfony 7</strong>, <strong>Laravel 12</strong>.
-        Je vais être admis l'année prochaine à UniLaSalle Polytechnique pour un cycle ingénieur de 3 ans en en apprentissage dans le domaine du réseaux et des objets connectés.
-        Je cherche donc une entreprise pour mon apprentissage à partir de septembre 2026, n'hésitez pas à me contacter !
+        Actuellement en Bachelor (niveau 6) en alternance dans la coordination de projets web après un BTS SIO SLAM obtenu avec 17,29 de moyenne, j’ai développé de solides compétences en développement Full Stack : <strong>PHP 8</strong>, <strong>Symfony 7</strong>, <strong>Laravel 12</strong>, <strong>C#</strong>, <strong>JavaScript</strong>, <strong>Vue 3</strong>, <strong>React 18</strong>, <strong>SQL</strong> ainsi que <strong>Drupal 10</strong> sous <strong>Docker</strong>.
+        Admis pour la rentrée 2026 au cycle ingénieur "<strong>UniLaSalle</strong>" en <strong>réseaux et objets connectés</strong>, je recherche une entreprise pour un apprentissage de 3 ans à partir de septembre 2026.
+        Mes expériences en agence web et en collectivité m’ont appris la rigueur, l’autonomie et le travail en équipe. Curieux et motivé, je souhaite désormais mettre mes compétences au service de projets orientés <strong>réseau</strong>, <strong>IoT</strong> et <strong>cybersécurité</strong>.
+        N’hésitez pas à me contacter !
       </p>
     </div>
   </div>
