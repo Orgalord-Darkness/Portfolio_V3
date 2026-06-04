@@ -21,29 +21,47 @@ use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Checkboxlist;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class FieldFichier
 {
+    private static array $allowedExtensions = ['pdf', 'png', 'jpg', 'jpeg'];
+
     public static function getFields()
     {
         return Fieldset::make('FICHIERS')->schema([
             Forms\Components\FileUpload::make('attachment')
             ->getUploadedFileNameForStorageUsing(
-                fn (TemporaryUploadedFile $file): string => $file->getClientOriginalName()
+                function (TemporaryUploadedFile $file, Get $get): string {
+                    $ext = strtolower($file->getClientOriginalExtension());
+                    if (!in_array($ext, self::$allowedExtensions)) {
+                        abort(422, 'Extension de fichier non autorisée.');
+                    }
+                    return ($get('_file_uuid') ?: (string) Str::uuid()) . '.' . $ext;
+                }
             )
-            ->afterStateUpdated(function (TemporaryUploadedFile $state, callable $set) {
+            ->afterStateUpdated(function (TemporaryUploadedFile $state, Set $set) {
                 if ($state) {
+                    $ext = strtolower($state->getClientOriginalExtension());
+                    if (!in_array($ext, self::$allowedExtensions)) {
+                        abort(422, 'Extension de fichier non autorisée.');
+                    }
+                    $uuid = (string) Str::uuid();
+                    $set('_file_uuid', $uuid);
                     $set('nom', $state->getClientOriginalName());
-                    $set('extension', $state->getClientOriginalExtension());
+                    $set('extension', $ext);
                     $set('taille', $state->getSize());
-                    $set('chemin', 'storage/fichiers/'.$state->getClientOriginalName());
+                    $set('chemin', 'storage/fichiers/' . $uuid . '.' . $ext);
                 }
             })
             ->disk('public')
-            ->directory('fichiers') 
+            ->directory('fichiers')
             ->visibility('public')
             ->required(),
+            Forms\Components\Hidden::make('_file_uuid'),
             
             Forms\Components\TextInput::make('nom')->required(), 
             Forms\Components\TextInput::make('chemin')->required(),

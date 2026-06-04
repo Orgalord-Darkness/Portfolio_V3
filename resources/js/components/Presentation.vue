@@ -14,11 +14,12 @@
     <div class="w-1/2 p-8 flex flex-col justify-center">
       <h2 class="text-4xl font-extrabold text-blue-900 mb-4">Bienvenue sur mon portfolio</h2>
       <p class="text-blue-900 text-lg mb-4">
-        Je m'appelle <strong>Heddy Mameri</strong>, étudiant de 2e année de <strong>BTS SIO SLAM</strong> à l'institut Saint Vincent
+        Je m'appelle <strong>Heddy Mameri</strong>, <strong>étudiant en Bachelor de coordination de projet web </strong> au CFA Saint Vincent.
       </p>
       <p class="text-blue-900">
         J'ai appris à être développeur Full Stack, avec des projets en <strong>PHP</strong>, <strong>C#</strong>, <strong>Symfony 7</strong>, <strong>Laravel 12</strong>.
-        Mon objectif est d'atteindre un master en génie informatique spécialisé en Intelligence Artificielle tout en conservant mes compétences Full Stack.
+        Je vais être admis l'année prochaine à UniLaSalle Polytechnique pour un cycle ingénieur de 3 ans en en apprentissage dans le domaine du réseaux et des objets connectés.
+        Je cherche donc une entreprise pour mon apprentissage à partir de septembre 2026, n'hésitez pas à me contacter !
       </p>
     </div>
   </div>

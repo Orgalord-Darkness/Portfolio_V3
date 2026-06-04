@@ -1,3 +1,8 @@
+# Interdire le remplacement de .htaccess via upload
+<Files ".htaccess">
+    Require all denied
+</Files>
+
 # Interdire l'exécution de PHP dans les dossiers d'uploads
 <FilesMatch "(?i)\.(php|phtml|php3|php4|php5|php7|phar)$">
     <IfModule mod_authz_core.c>
