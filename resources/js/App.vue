@@ -16,12 +16,12 @@
   </div>
 
   <!-- Contrôle musique -->
-  <div class="fixed top-4 right-4 z-50 flex items-center space-x-3 bg-[#e6f0ff] border-2 border-blue-900 shadow-md px-4 py-2 rounded-full">
-    <button @click="toggleMusic" class="bg-[#1e3a8a] text-white px-4 py-1 rounded-md hover:bg-blue-700 transition text-sm font-semibold">
+  <div class="fixed top-4 right-4 z-50 flex items-center space-x-2 sm:space-x-3 bg-[#e6f0ff] border-2 border-blue-900 shadow-md px-2 py-1 sm:px-4 sm:py-2 rounded-full">
+    <button @click="toggleMusic" class="bg-[#1e3a8a] text-white px-2 py-1 sm:px-4 sm:py-1 rounded-md hover:bg-blue-700 transition text-xs sm:text-sm font-semibold">
       {{ isPlaying ? 'Pause' : 'Musique' }}
     </button>
     <input type="range" min="0" max="1" step="0.01" v-model.number="volume" @input="changeVolume"
-           class="accent-blue-900 w-24" title="Volume" />
+           class="accent-blue-900 w-14 sm:w-24" title="Volume" />
   </div>
 
   <!-- Bouton sidebar -->
@@ -48,7 +48,7 @@
   <div class="flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-lg py-4 flex justify-center space-x-6 border-b border-gray-300 sticky top-0 z-30">
+    <nav class="bg-white shadow-lg py-3 sm:py-4 flex flex-wrap justify-center gap-x-3 sm:gap-x-6 gap-y-2 pl-14 pr-32 sm:px-4 text-sm sm:text-base border-b border-gray-300 sticky top-0 z-30">
       <router-link to="/app"            class="text-gray-700 hover:text-green-600 transition">Accueil</router-link>
       <router-link to="/projets"        class="text-gray-800 hover:text-green-600 transition">Projets</router-link>
       <router-link to="/parcours"       class="text-gray-800 hover:text-green-600 transition">Parcours</router-link>
@@ -57,7 +57,7 @@
     </nav>
 
     <!-- Contenu — pousse le footer vers le bas -->
-    <main class="flex-grow py-10 px-4">
+    <main class="flex-grow py-6 sm:py-10 px-4">
       <router-view />
     </main>
 
