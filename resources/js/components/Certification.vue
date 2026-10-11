@@ -31,7 +31,7 @@
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
       @click.self="closeModal"
     >
-      <div class="bg-white rounded-lg p-6 w-full max-w-lg shadow-xl max-h-[90vh] overflow-y-auto">
+      <div class="bg-white rounded-lg p-6 w-full max-w-lg mx-4 shadow-xl max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between mb-4">
           <img
             v-if="getVignette(selectedCertification.id_vignette)"

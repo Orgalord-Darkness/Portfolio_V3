@@ -7,7 +7,7 @@
     >
       <!-- Titre -->
       <div
-        class="mx-auto w-1/2 px-8 py-3 rounded shadow text-2xl font-semibold mb-6"
+        class="mx-auto w-11/12 sm:w-3/4 md:w-1/2 px-4 sm:px-8 py-3 rounded shadow text-lg sm:text-2xl font-semibold mb-6"
         :class="carrousel.style.header"
       >
         <h1 class="text-center">{{ carrousel.title }}</h1>
@@ -23,12 +23,12 @@
           <div
             v-for="(projet, index) in carrousel.data"
             :key="index"
-            class="snap-start rounded-xl p-6 shadow-md flex items-center space-x-6 min-w-full w-full"
+            class="snap-start rounded-xl p-4 sm:p-6 shadow-md flex flex-col md:flex-row md:items-center gap-4 md:gap-6 min-w-full w-full"
             :class="carrousel.style.bg"
           >
           <!-- Vignette -->
             <div
-              class="w-1/2 h-70 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden group relative cursor-pointer"
+              class="w-full md:w-1/2 h-56 sm:h-64 md:h-72 bg-white border border-gray-300 rounded-md flex items-center justify-center overflow-hidden group relative cursor-pointer"
               @click="openFullscreen(getVignette(projet.id_vignette))"
             >
               <img
@@ -49,8 +49,8 @@
 
 
             <!-- Infos -->
-            <div class="w-1/2 flex flex-col justify-between">
-              <h2 class="text-2xl font-bold text-left" :class="carrousel.style.colorDark">{{ projet.nom }}</h2>
+            <div class="w-full md:w-1/2 flex flex-col justify-between">
+              <h2 class="text-xl sm:text-2xl font-bold text-left" :class="carrousel.style.colorDark">{{ projet.nom }}</h2>
               <div class="text-sm md:text-base text-left space-y-2 max-w-3xl" :class="carrousel.style.colorDark">
                 <p><strong>Description :</strong> {{ projet.description }}</p>
                 <p><strong>Responsable :</strong> {{ projet.chef }}</p>
@@ -100,7 +100,7 @@
     class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
     @click.self="closeModal"
   >
-    <div class="p-8 rounded-lg shadow-xl w-96 text-center space-y-4 bg-white">
+    <div class="p-6 sm:p-8 rounded-lg shadow-xl w-[90%] sm:w-96 text-center space-y-4 bg-white">
       <h2
         v-if="selectedProject"
         class="bg-cyan-500 text-white font-bold py-2 px-4 rounded"
@@ -179,7 +179,7 @@ export default {
           bg: 'bg-[#e6f0ff]',
           color: 'text-[#1e3a8a]',
           colorDark: 'text-[#172554]',
-          btn: 'bg-[#1e3a8a] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition',
+          btn: 'bg-[#1e3a8a] w-full sm:w-1/2 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition',
           dot: 'bg-[#1e3a8a]'
         },
         ms: {
@@ -187,7 +187,7 @@ export default {
           bg: 'bg-[#ffebe6]',
           color: 'text-[#8a1e1e]',
           colorDark: 'text-[#450a0a]',
-          btn: 'bg-[#8a1e1e] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition',
+          btn: 'bg-[#8a1e1e] w-full sm:w-1/2 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition',
           dot: 'bg-[#8a1e1e]'
         },
         pp: {
@@ -195,7 +195,7 @@ export default {
           bg: 'bg-[#e6f9e6]',
           color: 'text-[#2f6e4d]',
           colorDark: 'text-[#14532d]',
-          btn: 'bg-[#2f6e4d] w-1/2 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition',
+          btn: 'bg-[#2f6e4d] w-full sm:w-1/2 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition',
           dot: 'bg-[#2f6e4d]'
         },
       };

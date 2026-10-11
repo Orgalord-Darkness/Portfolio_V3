@@ -1,40 +1,21 @@
 <template>
-  <div class="flex bg-white h-screen overflow-hidden">
-    <!-- Sidebar -->
-    <!-- <aside class="w-full bg-gray-100 p-4 border-r overflow-y-auto">
-      <h2 class="text-lg font-bold mb-4">Technologies</h2>
-      <ul>
-        <li
-          v-for="(apprentissage, index) in apprentissages"
-          :key="index"
-          class="mb-4 flex items-center space-x-2 cursor-pointer"
-          @click="openModal(apprentissage)"
-        >
-          <img
-            v-if="getVignette(apprentissage.id_vignette)"
-            :src="getVignette(apprentissage.id_vignette).chemin"
-            class="w-10 h-10 rounded-full object-contain border"
-            :alt="apprentissage.libelle"
-          />
-          <span class="text-sm font-medium">{{ apprentissage.libelle }}</span>
-        </li>
-      </ul>
-    </aside> -->
-
+  <div class="bg-white min-h-screen">
     <!-- Timeline -->
-    <div class="flex-1 overflow-auto py-10">
-      <div class="w-64 max-w-4xl mx-auto relative">
+    <div class="py-10">
+      <div class="w-full max-w-3xl mx-auto relative px-4 md:px-0">
         <!-- Timeline centrale -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-blue-600 z-0"></div>
+        <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full border-l-4 border-blue-600 z-0"></div>
 
         <!-- Bulles apprentissages -->
         <div
           v-for="(apprentissage, index) in apprentissages"
           :key="apprentissage.id"
-          class="w-full flex items-center justify-between mb-12 relative"
+          class="relative mb-10 md:mb-12 md:flex md:items-center"
         >
+          <div class="absolute left-4 md:left-1/2 top-1 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-4 h-4 rounded-full bg-white border-4 border-blue-500 z-10"></div>
+
           <template v-if="index % 2 === 0">
-            <div class="w-1/2 pr-6 text-right">
+            <div class="pl-10 md:pl-0 md:pr-6 md:w-1/2 md:ml-auto text-left md:text-right">
               <div class="inline-flex items-center space-x-2 cursor-pointer" @click="openModal(apprentissage)">
                 <span class="text-sm font-semibold text-gray-700">{{ apprentissage.libelle }}</span>
                 <img
@@ -46,14 +27,10 @@
               </div>
               <div class="text-xs text-gray-500 mt-1">{{ formatDate(apprentissage.commencement) }}</div>
             </div>
-            <div class="w-4 h-4 rounded-full bg-white border-4 border-blue-500 z-10"></div>
-            <div class="w-1/2 pl-6"></div>
           </template>
 
           <template v-else>
-            <div class="w-1/2 pr-6"></div>
-            <div class="w-4 h-4 rounded-full bg-white border-4 border-blue-500 z-10"></div>
-            <div class="w-1/2 pl-6 text-left">
+            <div class="pl-10 md:pl-6 md:w-1/2 md:mr-auto text-left">
               <div class="inline-flex items-center space-x-2 cursor-pointer" @click="openModal(apprentissage)">
                 <img
                   v-if="getVignette(apprentissage.id_vignette)"
@@ -75,7 +52,7 @@
       v-if="selectedApprentissage"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
     >
-      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4 relative">
         <button
           @click="selectedApprentissage = null"
           class="absolute top-2 right-3 text-gray-600 hover:text-red-600"

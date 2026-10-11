@@ -16,12 +16,12 @@
   </div>
 
   <!-- Contrôle musique -->
-  <div class="fixed top-4 right-4 z-50 flex items-center space-x-3 bg-[#e6f0ff] border-2 border-blue-900 shadow-md px-4 py-2 rounded-full">
-    <button @click="toggleMusic" class="bg-[#1e3a8a] text-white px-4 py-1 rounded-md hover:bg-blue-700 transition text-sm font-semibold">
+  <div class="fixed top-4 right-4 z-50 flex items-center space-x-2 bg-[#e6f0ff] border-2 border-blue-900 shadow-md px-2 py-1 sm:px-3 sm:py-1.5 rounded-full">
+    <button @click="toggleMusic" class="bg-[#1e3a8a] text-white px-2 py-1 sm:px-3 rounded-md hover:bg-blue-700 transition text-xs sm:text-sm font-semibold">
       {{ isPlaying ? 'Pause' : 'Musique' }}
     </button>
     <input type="range" min="0" max="1" step="0.01" v-model.number="volume" @input="changeVolume"
-           class="accent-blue-900 w-24" title="Volume" />
+           class="accent-blue-900 w-12 sm:w-16" title="Volume" />
   </div>
 
   <!-- Bouton sidebar -->
@@ -34,21 +34,27 @@
          class="fixed top-0 left-0 h-screen w-64 bg-white shadow-lg z-40 flex flex-col transition-transform duration-300">
     <div class="h-16 flex items-center justify-center border-b text-xl font-bold text-blue-700">MonPortfolio</div>
     <nav class="flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium">
-      <router-link to="/app"        class="hover:text-blue-600 transition">Accueil</router-link>
+      <router-link to="/app"            class="hover:text-blue-600 transition">Accueil</router-link>
+      <router-link to="/projets"        class="hover:text-blue-600 transition">Projets</router-link>
+      <router-link to="/parcours"       class="hover:text-blue-600 transition">Parcours</router-link>
+      <router-link to="/certifications" class="hover:text-blue-600 transition">Certifications</router-link>
+      <router-link to="/contact"        class="hover:text-blue-600 transition">Contact</router-link>
+
+      <hr class="border-gray-300">
+
       <a href="https://github.com/Orgalord-Darkness" class="hover:text-blue-600 transition">Github</a>
       <a href="/storage/fichiers/RGPD.pdf"           class="hover:text-blue-600 transition" download>RGPD <i class="fa-solid fa-upload"></i></a>
       <a href="/storage/fichiers/mentionslegales.pdf" class="hover:text-blue-600 transition" download>Mentions légales <i class="fa-solid fa-upload"></i></a>
       <a href="https://www.figma.com/design/MK203PiQbB21mMhl1cq9P6/PortfolioV3?node-id=0-1&p=f&t=kM3vBuKExhrk56FG-0"
          class="hover:text-blue-600 transition">Maquette Figma</a>
-      <router-link to="/contact"    class="hover:text-blue-600 transition">Contact</router-link>
     </nav>
   </aside>
 
   <!-- Layout principal : flex column qui prend toute la hauteur -->
   <div class="flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg py-4 flex justify-center space-x-6 border-b border-gray-300 sticky top-0 z-30">
+    <!-- Navbar (desktop uniquement — sidebar utilisée en mobile/tablette) -->
+    <nav class="hidden lg:flex justify-center gap-x-6 bg-white shadow-lg py-4 px-4 text-base border-b border-gray-300 sticky top-0 z-30">
       <router-link to="/app"            class="text-gray-700 hover:text-green-600 transition">Accueil</router-link>
       <router-link to="/projets"        class="text-gray-800 hover:text-green-600 transition">Projets</router-link>
       <router-link to="/parcours"       class="text-gray-800 hover:text-green-600 transition">Parcours</router-link>
@@ -57,7 +63,7 @@
     </nav>
 
     <!-- Contenu — pousse le footer vers le bas -->
-    <main class="flex-grow py-10 px-4">
+    <main class="flex-grow py-6 sm:py-10 px-4">
       <router-view />
     </main>
 

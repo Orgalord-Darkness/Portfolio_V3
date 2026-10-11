@@ -1,18 +1,18 @@
 <template>
-<div class="relative h-screen flex items-center justify-center" name="presentation">
+<div class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-0" name="presentation">
   <div class="absolute inset-0 flex items-center justify-center">
     <svg class="w-3/4 h-1/2 opacity-20" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,100 C200,200 600,0 800,100 L800,400 L0,400 Z" fill="#3b82f6"/>
     </svg>
   </div>
 
-  <div class="relative z-10 flex bg-blue-100 rounded-xl shadow-lg overflow-hidden w-11/12 max-w-6xl border-4 border-blue-900">
-    <div class="w-1/2">
-      <img :src="avatar" alt="Présentation" class="object-cover object-center border-4 border-blue-100 h-full w-full rounded shadow-lg">
+  <div class="relative z-10 flex flex-col md:flex-row bg-blue-100 rounded-xl shadow-lg overflow-hidden w-11/12 max-w-6xl border-4 border-blue-900">
+    <div class="w-full md:w-1/2">
+      <img :src="avatar" alt="Présentation" class="object-cover object-center border-4 border-blue-100 h-64 sm:h-80 md:h-full w-full rounded shadow-lg">
     </div>
 
-    <div class="w-1/2 p-8 flex flex-col justify-center">
-      <h2 class="text-4xl font-extrabold text-blue-900 mb-4">Bienvenue sur mon portfolio</h2>
+    <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">Bienvenue sur mon portfolio</h2>
       <p class="text-blue-900 text-lg mb-4">
         Je m'appelle <strong>Heddy Mameri</strong>, <strong>étudiant en Bachelor de coordination de projet web </strong> au CFA Saint Vincent.
       </p>
